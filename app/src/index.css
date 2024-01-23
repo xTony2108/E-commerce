@@ -7,3 +7,20 @@
     font-family: kanit;
   }
 }
+
+@layer components {
+  .hero-section {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(18, 20, 32, 0) 25.5%,
+      #121420 91.5%
+    );
+    background-blend-mode: luminosity;
+  }
+}
