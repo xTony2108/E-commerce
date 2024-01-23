@@ -10,12 +10,12 @@ export const HeroSection = () => {
       <div className="absolute top-0 left-0 right-0 bottom-0 after:hero-section max-h-screen">
         <img src={bg} className="w-full object-cover relative h-full" />
       </div>
-      <div className="relative max-w-screen-lg m-auto display flex items-center min-h-[calc(100svh-112px)] gap-16">
+      <div className="relative max-w-screen-2xl m-auto display flex items-center min-h-[calc(100svh-112px)] gap-16 max-2xl:max-w-screen-lg">
         <div className="flex flex-col gap-4 flex-1">
-          <h1 className="font-black text-4xl text-[#AEDFF7]">
+          <h1 className="font-black text-5xl text-[#AEDFF7] max-2xl:text-4xl">
             GamerGear Hub: potenzia il tuo gioco, vivi la vittoria!
           </h1>
-          <p className="text-white text-base font-normal">
+          <p className="text-white text-lg font-normal max-2xl:text-base">
             Scopri il potenziale del tuo setup gaming con GamerGear Hub! Scegli
             i componenti di ultima generazione per un'esperienza di gioco
             straordinaria. Entra nel mondo dell'alta performance, acquista
