@@ -15,16 +15,16 @@ export const SecondDescription = () => {
         </p>
         <ul className="text-white list-disc">
           <li>
-            Prestazioni Straordinarie: Processori e schede grafiche
+            Prestazioni straordinarie: processori e schede grafiche
             all'avanguardia per un'esperienza di gioco e produttività senza
             compromessi.
           </li>
           <li>
-            Affidabilità senza Paragoni: Componenti selezionati attentamente per
+            Affidabilità senza paragoni: componenti selezionati attentamente per
             garantire una durata nel tempo e una stabilità superiore.
           </li>
           <li>
-            Stile e Design: Componenti che non solo esaltano le prestazioni, ma
+            Stile e design: componenti che non solo esaltano le prestazioni, ma
             aggiungono anche un tocco di eleganza al tuo setup.
           </li>
         </ul>
