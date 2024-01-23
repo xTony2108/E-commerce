@@ -4,6 +4,7 @@ import { SecondDescription } from "../components/SecondDescription";
 import { ThirdDescription } from "../components/ThirdDescription";
 import { FeedbackCard } from "../components/FeedbackCard";
 import { Faq } from "../components/Faq";
+import { BottomCta } from "../components/BottomCta";
 
 export const Home = () => {
   const firstComment = `Ho recentemente acquistato un processore dal vostro e-commerce e sono
@@ -58,6 +59,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
+      <BottomCta />
     </>
   );
 };
