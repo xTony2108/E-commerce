@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         kanit: ["Kanit", "sans-serif"],
       },
+      backgroundImage: {
+        bottomCta: `url("./src/assets/images/bottomCta/bg.jpg")`,
+      },
     },
   },
   plugins: [],
