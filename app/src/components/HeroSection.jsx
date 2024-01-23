@@ -1,5 +1,5 @@
 import bg from "../assets/images/HeroSection/bg.png";
-import cta from "../assets/images/HeroSection/cta.jpg";
+import cta from "../assets/images/HeroSection/cta.png";
 import { Button } from "./Button";
 import { Navbar } from "./Navbar";
 
@@ -27,11 +27,7 @@ export const HeroSection = () => {
           </div>
         </div>
         <div className="flex-1">
-          <img
-            src={cta}
-            alt="man gaming on a chair"
-            className="rounded-full max-w-full aspect-square object-cover"
-          />
+          <img src={cta} alt="man gaming on a chair" className="object-cover" />
         </div>
       </div>
     </header>
