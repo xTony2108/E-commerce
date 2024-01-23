@@ -4,7 +4,7 @@ export const SecondDescription = () => {
   return (
     <div className="py-32 flex items-center gap-16">
       <div className="flex-1">
-        <h3 className="text-[#AEDFF7] font-bold text-2xl mb-4">
+        <h3 className="text-[#AEDFF7] font-bold mb-4 text-3xl max-2xl:text-xl">
           Scopri l'eccellenza tecnologica: un mondo di prestazioni straordinarie
           ti aspetta!
         </h3>
@@ -30,7 +30,7 @@ export const SecondDescription = () => {
         </ul>
       </div>
       <div className="flex-1">
-        <img src={pc} alt="gaming pc" className="rounded-2xl" />
+        <img src={pc} alt="gaming pc" className="rounded-2xl w-full" />
       </div>
     </div>
   );

@@ -4,10 +4,10 @@ export const ThirdDescription = () => {
   return (
     <div className="flex items-center gap-16">
       <div className="flex-1">
-        <img src={setup} alt="gaming pc" className="rounded-2xl" />
+        <img src={setup} alt="gaming pc" className="rounded-2xl w-full" />
       </div>
       <div className="flex-1">
-        <h3 className="text-[#AEDFF7] font-bold text-2xl mb-4">
+        <h3 className="text-[#AEDFF7] font-bold mb-4 text-3xl max-2xl:text-xl">
           Espandi le possibilità con la nostra selezione
         </h3>
         <ul className="text-white list-disc">
