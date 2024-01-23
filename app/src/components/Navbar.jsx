@@ -5,7 +5,7 @@ export const Navbar = () => {
     <>
       <nav>
         <div
-          className="flex justify-between items-center max-w-screen-lg m-auto py-10 relative z-50"
+          className="flex justify-between items-center max-w-screen-2xl m-auto py-10 relative z-50 max-2xl:max-w-screen-lg"
           role="presentation"
           aria-hidden="true"
         >
