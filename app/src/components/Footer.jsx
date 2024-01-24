@@ -4,11 +4,11 @@ export const Footer = () => {
       <div className="bg-[#0D0F11] py-16">
         <div className="max-w-screen-2xl m-auto flex flex-col gap-8">
           <div className="flex items-center justify-between w-full">
-            <span className="text-[#AEDFF7] font-bold text-2xl max-2xl:text-xl">
+            <span className="text-[#F0C039] font-bold text-2xl max-2xl:text-xl">
               GamerGear Hub
             </span>
             <div className="flex flex-col items-center text-white gap-2">
-              <span className="text-[#AEDFF7] font-bold text-xl max-2xl:text-lg">
+              <span className="text-[#F0C039] font-bold text-xl max-2xl:text-lg">
                 Informazioni
               </span>
               <a href="#">Chi siamo</a>
@@ -17,7 +17,7 @@ export const Footer = () => {
               <a href="#">Politica sulla privacy</a>
             </div>
             <div className="flex flex-col items-center text-white gap-2">
-              <span className="text-[#AEDFF7] font-bold text-xl max-2xl:text-lg">
+              <span className="text-[#F0C039] font-bold text-xl max-2xl:text-lg">
                 Assistenza Clienti
               </span>
               <a href="#">Guida all'acquisto</a>
@@ -25,7 +25,7 @@ export const Footer = () => {
               <a href="#">Restituzioni e garanzie</a>
             </div>
             <div className="flex flex-col items-center text-white gap-2">
-              <span className="text-[#AEDFF7] font-bold text-xl max-2xl:text-lg">
+              <span className="text-[#F0C039] font-bold text-xl max-2xl:text-lg">
                 Connettiti con Noi
               </span>
               <a href="#">Facebook</a>
@@ -35,7 +35,7 @@ export const Footer = () => {
           </div>
           <span className="text-white text-end">
             Copyright © 2024
-            <span className="text-[#AEDFF7]"> GamerGear Hub</span>. Tutti i
+            <span className="text-[#F0C039]"> GamerGear Hub</span>. Tutti i
             diritti riservati.
           </span>
         </div>
