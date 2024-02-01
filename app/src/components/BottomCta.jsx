@@ -1,4 +1,4 @@
-import { Button } from "./Button";
+import { ButtonLink } from "./ButtonLink";
 
 export const BottomCta = () => {
   return (
@@ -12,7 +12,7 @@ export const BottomCta = () => {
             Dai un'accelerata al tuo setup e vivi l'esperienza di gioco
             definitiva. Scegli la potenza, scegli la vittoria!
           </p>
-          <Button text="Esplora ora" filled={true} route="/products" />
+          <ButtonLink text="Esplora ora" filled={true} route="/products" />
         </div>
       </div>
     </section>
