@@ -1,6 +1,6 @@
 import bg from "../assets/images/HeroSection/bg.png";
 import cta from "../assets/images/HeroSection/cta.png";
-import { Button } from "./Button";
+import { ButtonLink } from "./ButtonLink";
 import { Navbar } from "./Navbar";
 
 export const HeroSection = () => {
@@ -22,8 +22,8 @@ export const HeroSection = () => {
             adesso e solca il tuo cammino verso la vittoria!
           </p>
           <div className="flex gap-4">
-            <Button text="Iscriviti" filled={true} route="/register" />
-            <Button text="Prodotti" filled={false} route="/products" />
+            <ButtonLink text="Iscriviti" filled={true} route="/register" />
+            <ButtonLink text="Prodotti" filled={false} route="/products" />
           </div>
         </div>
         <div className="flex-1">
