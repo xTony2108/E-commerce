@@ -31,9 +31,13 @@ export const FormInput = ({
         />
       )}
       {type === "checkbox" && (
-        <label htmlFor={name} className="text-white flex items-center gap-1">
+        <label
+          htmlFor={name}
+          className="text-white flex items-center gap-1 select-none"
+        >
           <input
             type={type}
+            id={name}
             name={name}
             placeholder={placeholder}
             value={value}
