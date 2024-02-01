@@ -4,14 +4,14 @@ export const Button = ({ text, filled, route }) => {
   return filled ? (
     <Link
       to={route}
-      className="min-w-32 text-center text-lg text-white bg-[#A70B0B] px-5 rounded-lg"
+      className="min-w-32 text-center text-lg text-white bg-[#00C6C1] px-5 rounded-lg"
     >
       {text}
     </Link>
   ) : (
     <Link
       to={route}
-      className="min-w-32 text-center text-lg text-white border border-[#A70B0B] px-5 rounded-lg"
+      className="min-w-32 text-center text-lg text-white border border-[#00C6C1] px-5 rounded-lg"
     >
       {text}
     </Link>

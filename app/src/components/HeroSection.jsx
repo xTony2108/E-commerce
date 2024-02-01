@@ -12,7 +12,7 @@ export const HeroSection = () => {
       </div>
       <div className="relative max-w-screen-2xl m-auto display flex items-center min-h-[calc(100svh-112px)] gap-16 max-2xl:max-w-screen-lg">
         <div className="flex flex-col gap-4 flex-1">
-          <h1 className="font-black text-5xl text-[#AEDFF7] max-2xl:text-4xl">
+          <h1 className="font-black text-5xl text-[#F0C039] max-2xl:text-4xl">
             GamerGear Hub: potenzia il tuo gioco, vivi la vittoria!
           </h1>
           <p className="text-white text-lg font-normal max-2xl:text-base">

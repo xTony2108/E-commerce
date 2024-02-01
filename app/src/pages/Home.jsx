@@ -28,10 +28,10 @@ export const Home = () => {
             <ThirdDescription />
           </div>
         </div>
-        <div className="bg-[#27303B] py-32">
+        <div className="bg-[#3C3E4C] py-32">
           <div className="max-w-screen-2xl m-auto max-2xl:max-w-screen-lg">
             <section>
-              <h2 className="text-[#AEDFF7] font-bold text-3xl mb-12 text-center max-2xl:text-xl">
+              <h2 className="text-[#F0C039] font-bold text-3xl mb-12 text-center max-2xl:text-xl">
                 Feedback degli acquirenti: il verdetto direttamente dai
                 consumatori
               </h2>
@@ -42,7 +42,7 @@ export const Home = () => {
               </div>
             </section>
             <section>
-              <h2 className="text-[#AEDFF7] font-bold text-3xl mb-12 text-center max-2xl:text-xl">
+              <h2 className="text-[#F0C039] font-bold text-3xl mb-12 text-center max-2xl:text-xl">
                 Domande Frequenti
               </h2>
               <div className="flex flex-col gap-8">
