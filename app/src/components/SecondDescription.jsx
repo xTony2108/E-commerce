@@ -5,7 +5,7 @@ export const SecondDescription = () => {
     <section>
       <div className="py-32 flex items-center gap-16">
         <div className="flex-1">
-          <h2 className="text-[#AEDFF7] font-bold mb-4 text-3xl max-2xl:text-xl">
+          <h2 className="text-[#F0C039] font-bold mb-4 text-3xl max-2xl:text-xl">
             Scopri l'eccellenza tecnologica: un mondo di prestazioni
             straordinarie ti aspetta!
           </h2>

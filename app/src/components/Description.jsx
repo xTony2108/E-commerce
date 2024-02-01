@@ -3,7 +3,7 @@ export const Description = () => {
     <section>
       <div className="flex gap-4 border-b border-white pb-8">
         <div className="flex flex-col gap-2 flex-1">
-          <h2 className="text-[#AEDFF7] font-bold text-3xl max-2xl:text-xl">
+          <h2 className="text-[#F0C039] font-bold text-3xl max-2xl:text-xl">
             Le Migliori Scelte!
           </h2>
           <p className="text-white text-lg">
@@ -12,7 +12,7 @@ export const Description = () => {
           </p>
         </div>
         <div className="flex flex-col gap-2 flex-1">
-          <h2 className="text-[#AEDFF7] font-bold text-3xl max-2xl:text-xl">
+          <h2 className="text-[#F0C039] font-bold text-3xl max-2xl:text-xl">
             Prestazioni Eccellenti
           </h2>
           <p className="text-white text-lg">
@@ -22,7 +22,7 @@ export const Description = () => {
           </p>
         </div>
         <div className="flex flex-col gap-2 flex-1">
-          <h2 className="text-[#AEDFF7] font-bold text-3xl max-2xl:text-xl">
+          <h2 className="text-[#F0C039] font-bold text-3xl max-2xl:text-xl">
             Ultimi Arrivi!
           </h2>
           <p className="text-white text-lg">
