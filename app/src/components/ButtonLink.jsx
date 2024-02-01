@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const Button = ({ text, filled, route }) => {
+export const ButtonLink = ({ text, filled, route }) => {
   return filled ? (
     <Link
       to={route}
