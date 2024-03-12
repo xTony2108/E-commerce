@@ -10,6 +10,10 @@ export const FormInput = ({
   handlerFunc,
   autoComplete,
   text,
+  pattern,
+  title,
+  maxLength,
+  addClass,
 }) => {
   const [showPw, setShowPw] = useState(false);
 
@@ -21,13 +25,20 @@ export const FormInput = ({
     <>
       {type !== "checkbox" && type !== "password" && (
         <input
-          className="w-4/6 pl-3 rounded-md py-2 outline-none"
+          className={clsx(
+            "pl-3 rounded-md py-2 outline-none",
+            addClass && addClass
+          )}
           type={type}
           name={name}
           placeholder={placeholder}
           value={value}
           onChange={handlerFunc}
           autoComplete={autoComplete}
+          pattern={pattern}
+          title={title}
+          maxLength={maxLength}
+          required
         />
       )}
       {type === "checkbox" && (
@@ -48,17 +59,20 @@ export const FormInput = ({
         </label>
       )}
       {type === "password" && (
-        <div className="bg-white w-4/6 flex items-center rounded-md">
+        <div className="bg-white flex items-center rounded-md w-full">
           <input
             className="pl-3 rounded-md py-2 outline-none w-full"
-            type={clsx(type, showPw && "text")}
+            type={clsx(!showPw && type, showPw && "text")}
             name={name}
             placeholder={placeholder}
             value={value}
             onChange={handlerFunc}
             autoComplete={autoComplete}
+            pattern={pattern}
+            title={title}
+            required
           />
-          <button className="" type="button" onClick={handleShowPw}>
+          <button type="button" onClick={handleShowPw}>
             <FontAwesomeIcon
               icon={clsx("fa-solid fa-eye", showPw && "fa-solid fa-eye-slash")}
               size="lg"
