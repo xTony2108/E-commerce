@@ -7,10 +7,10 @@ export const HeroSection = () => {
   return (
     <header className="relative">
       <Navbar />
-      <div className="absolute top-0 left-0 right-0 bottom-0 after:hero-section max-h-screen">
+      <div className="absolute top-0 left-0 right-0 bottom-0 after:hero-section">
         <img src={bg} className="w-full object-cover relative h-full" />
       </div>
-      <div className="relative max-w-screen-2xl m-auto display flex items-center min-h-[calc(100svh-112px)] gap-16 max-2xl:max-w-screen-lg">
+      <div className="relative max-w-screen-2xl m-auto display flex items-center min-h-[calc(100svh-112px)] max-2xl:max-w-screen-lg">
         <div className="flex flex-col gap-4 flex-1">
           <h1 className="font-black text-5xl text-[#F0C039] max-2xl:text-4xl">
             GamerGear Hub: potenzia il tuo gioco, vivi la vittoria!
@@ -26,7 +26,7 @@ export const HeroSection = () => {
             <ButtonLink text="Prodotti" filled={false} route="/products" />
           </div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 flex justify-center">
           <img src={cta} alt="man gaming on a chair" className="object-cover" />
         </div>
       </div>

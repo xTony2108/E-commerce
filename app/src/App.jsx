@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Cart } from "./pages/Cart";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export const App = () => {
   return (
