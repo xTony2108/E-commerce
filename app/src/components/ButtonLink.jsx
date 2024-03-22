@@ -15,7 +15,10 @@ export const ButtonLink = ({ text, filled, route, addClass }) => {
   ) : (
     <Link
       to={route}
-      className="min-w-32 text-center text-base py-1 text-white border border-gghbg-gghViolet px-5 rounded-lg"
+      className={clsx(
+        "min-w-32 text-center text-base py-1 px-5 rounded-lg",
+        addClass ? addClass : "text-white border border-gghViolet"
+      )}
     >
       {text}
     </Link>
