@@ -13,6 +13,7 @@ const connect = async () => {
 
 const models = {
   User: require("./models/User"),
+  Product: require("./models/Product"),
 };
 
 module.exports = { ...models, connect };

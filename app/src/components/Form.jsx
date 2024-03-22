@@ -3,13 +3,14 @@ import { FormInput } from "./FormInput";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormButton } from "./FormButton";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import clsx from "clsx";
 import { useAxios } from "../hooks/useAxios";
 import { validateInput } from "../utility/UserValidation";
 import { isFormCompiled } from "../utility/formValidation";
 import {
   notifyAxiosError,
+  notifyError,
   notifySuccess,
 } from "../utility/toastifyNotification";
 import { useDispatch } from "react-redux";
@@ -38,6 +39,8 @@ export const Form = ({ isLogin }) => {
 
   const [page, setPage] = useState(1);
 
+  //chiamata registrazione
+
   const { data, error, loading, update } = useAxios(
     "http://localhost:3000/api/users/register",
     {
@@ -46,6 +49,8 @@ export const Form = ({ isLogin }) => {
       data: register,
     }
   );
+
+  //chiamata login
 
   const {
     data: loginData,
@@ -60,6 +65,8 @@ export const Form = ({ isLogin }) => {
 
   const handleRegisterInputChange = (event) => {
     const { name, value } = event.target;
+
+    //switch per rimuovere caratteri non numerici
 
     let validatedValue;
 
@@ -113,6 +120,8 @@ export const Form = ({ isLogin }) => {
     await loginUpdate();
   };
 
+  //gestione registrazione che, una volta avvenuta, renderizza l'utente alla pagina di login
+
   useEffect(() => {
     if (!loading) {
       if (data) {
@@ -125,6 +134,8 @@ export const Form = ({ isLogin }) => {
       }
     }
   }, [error, data, loading]);
+
+  //gestione login che, una volta avvenuto, renderizza l'utente alla pagina dei prodotti
 
   useEffect(() => {
     if (!loginLoading) {
@@ -142,8 +153,20 @@ export const Form = ({ isLogin }) => {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        toastStyle={{ backgroundColor: "#080808", color: "white" }}
+      />
       {!isLogin && (
-        <div className="flex bg-[#121420] rounded-3xl rounded-r-[1.8rem] shadow-2xl">
+        <div className="flex bg-black rounded-3xl rounded-r-[1.8rem] shadow-2xl">
           <div className="py-20 px-16 rounded-3xl">
             <span className="text-white text-3xl font-bold text-center w-full block mb-6">
               Registrati
@@ -266,18 +289,18 @@ export const Form = ({ isLogin }) => {
               </div>
             </form>
           </div>
-          <div className="flex flex-col justify-center items-center py-20 px-14 gap-6 bg-[#F0C039] rounded-r-3xl rounded-tl-[160px] rounded-bl-[120px]">
-            <span className="text-[#121420] text-3xl font-bold min-w-72">
+          <div className="flex flex-col justify-center items-center py-20 px-14 gap-6 bg-gghYellow rounded-r-3xl rounded-tl-[160px] rounded-bl-[120px]">
+            <span className="text-black text-3xl font-bold min-w-72">
               Hai già un account?
             </span>
             <FormButton text="Login" isButton={false} path="/login" />
-            <div className="flex items-center gap-2 border-b border-[#121420]">
+            <div className="flex items-center gap-2 border-b border-black">
               <FontAwesomeIcon
                 icon="fa-solid fa-arrow-left"
                 size="lg"
-                style={{ color: "#121420" }}
+                style={{ color: "#080808" }}
               />
-              <Link to="/" className="text-lg text-[#121420] font-semibold">
+              <Link to="/" className="text-lg text-black font-semibold">
                 Torna alla home
               </Link>
             </div>
@@ -285,7 +308,7 @@ export const Form = ({ isLogin }) => {
         </div>
       )}
       {isLogin && (
-        <div className="flex bg-[#121420] rounded-3xl rounded-r-[1.8rem] shadow-2xl">
+        <div className="flex bg-black rounded-3xl rounded-r-[1.8rem] shadow-2xl">
           <div className="py-[118px] px-16 rounded-3xl">
             <span className="text-white text-3xl font-bold text-center w-full block mb-6">
               Login
@@ -327,18 +350,18 @@ export const Form = ({ isLogin }) => {
               </div>
             </form>
           </div>
-          <div className="py-20 px-14 flex flex-col justify-center items-center gap-6 bg-[#F0C039] rounded-r-3xl rounded-tl-[160px] rounded-bl-[120px]">
+          <div className="py-20 px-14 flex flex-col justify-center items-center gap-6 bg-gghYellow rounded-r-3xl rounded-tl-[160px] rounded-bl-[120px]">
             <span className="text-3xl font-bold min-w-72">
               Non hai un account?
             </span>
             <FormButton text="Registrati" isButton={false} path="/register" />
-            <div className="flex items-center gap-2 border-b border-[#121420]">
+            <div className="flex items-center gap-2 border-b border-black">
               <FontAwesomeIcon
                 icon="fa-solid fa-arrow-left"
                 size="lg"
-                style={{ color: "#121420" }}
+                style={{ color: "#080808" }}
               />
-              <Link to="/" className="text-lg text-[#121420] font-semibold">
+              <Link to="/" className="text-lg text-black font-semibold">
                 Torna alla home
               </Link>
             </div>

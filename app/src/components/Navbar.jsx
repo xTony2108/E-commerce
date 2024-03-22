@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
   return (
     <>
-      <nav>
+      <nav className="bg-primary">
         <div
           className="flex justify-between items-center max-w-screen-2xl m-auto py-10 relative z-50 max-2xl:max-w-screen-lg"
           role="presentation"
@@ -19,9 +19,15 @@ export const Navbar = () => {
             role="presentation"
             aria-hidden="true"
           >
-            <Link to="/">Home</Link>
-            <Link to="/products">Prodotti</Link>
-            <Link to="/login">Login</Link>
+            <Link to="/" className="active:translate-y-0.5">
+              Home
+            </Link>
+            <Link to="/products" className="active:translate-y-0.5">
+              Prodotti
+            </Link>
+            <Link to="/login" className="active:translate-y-0.5">
+              Login
+            </Link>
           </div>
         </div>
       </nav>
