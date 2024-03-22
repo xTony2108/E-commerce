@@ -14,7 +14,7 @@ export const FormButton = ({
       {isButton && singleButton && (
         <button
           className={clsx(
-            "min-w-48 py-3 bg-[#F0C039] text-[#121420] rounded-xl font-medium",
+            "min-w-48 py-3 bg-gghYellow text-black rounded-xl font-semibold",
             marginTop && `mt-${marginTop}`
           )}
         >
@@ -25,7 +25,7 @@ export const FormButton = ({
         <Link
           to={path}
           className={clsx(
-            "min-w-48 py-[10px] border-2 border-[#121420] text-[#121420] rounded-xl text-center font-medium",
+            "min-w-48 py-[10px] border-2 border-black text-black rounded-xl text-center font-semibold",
             marginTop && `mt-4`
           )}
         >
@@ -37,7 +37,7 @@ export const FormButton = ({
           onClick={handler}
           type="button"
           className={clsx(
-            "min-w-32 py-3 bg-[#F0C039] text-[#121420] rounded-xl font-medium",
+            "min-w-32 py-3 bg-gghYellow text-black rounded-xl font-semibold",
             marginTop && `mt-${marginTop}`
           )}
         >

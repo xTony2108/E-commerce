@@ -8,7 +8,7 @@ export const ThirdDescription = () => {
           <img src={setup} alt="gaming pc" className="rounded-2xl w-full" />
         </div>
         <div className="flex-1">
-          <h2 className="text-[#F0C039] font-bold mb-4 text-3xl max-2xl:text-xl">
+          <h2 className="text-gghYellow font-bold mb-4 text-3xl max-2xl:text-xl">
             Espandi le possibilità con la nostra selezione
           </h2>
           <ul className="text-white text-lg list-disc">

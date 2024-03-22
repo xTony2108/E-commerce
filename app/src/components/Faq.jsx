@@ -9,7 +9,7 @@ export const Faq = ({ question, answer }) => {
   };
   return (
     <>
-      <div className="border-b border-[#F0C039] text-white pb-2 text-xl">
+      <div className="border-b border-gghPink text-white pb-2 text-xl">
         <button
           onClick={handleHideFaq}
           className="flex justify-between w-full text-white"

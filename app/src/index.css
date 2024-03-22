@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    font-family: kanit;
+    font-family: lato;
   }
 }
 
@@ -15,11 +15,36 @@
     top: 0px;
     right: 0px;
     bottom: 0px;
-
     background: linear-gradient(
       180deg,
       rgba(18, 20, 32, 0) 25.5%,
       #121420 91.5%
     );
+  }
+
+  .cardBg::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0.375rem;
+    opacity: 0.5;
+    z-index: 10;
+    background: rgb(202, 0, 245);
+    background: linear-gradient(
+      135deg,
+      rgba(202, 0, 245, 1) 0%,
+      rgba(122, 0, 245, 1) 50%,
+      rgba(0, 114, 245, 1) 100%
+    );
+  }
+
+  .imageParent:hover .hideProduct {
+    display: none;
+  }
+  .imageParent:hover .showButton {
+    display: block;
   }
 }
