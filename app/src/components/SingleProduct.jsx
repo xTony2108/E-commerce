@@ -5,11 +5,10 @@ export const SingleProduct = () => {
   const param = useParams();
   const products = useSelector((state) => state.product.products);
   const product =
-    useSelector((state) => state.product.product) ||
+    useSelector((state) => state.product.singleProduct) ||
     (products && products.find((product) => product._id === param.id));
 
   const loading = useSelector((state) => state.product.loading);
-  console.log(product);
   return (
     <>
       {!loading && (
