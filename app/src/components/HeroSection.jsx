@@ -1,6 +1,5 @@
-import bg from "../assets/images/HeroSection/bg.png";
 import cta from "../assets/images/HeroSection/cta.png";
-import { ButtonLink } from "./ButtonLink";
+import { Buttons } from "./Buttons";
 import { Navbar } from "./Navbar";
 
 export const HeroSection = () => {
@@ -20,8 +19,8 @@ export const HeroSection = () => {
               acquista adesso e solca il tuo cammino verso la vittoria!
             </p>
             <div className="flex gap-4">
-              <ButtonLink text="Iscriviti" filled={true} route="/register" />
-              <ButtonLink text="Prodotti" filled={false} route="/products" />
+              <Buttons text="Iscriviti" filled={true} route="/register" />
+              <Buttons text="Prodotti" filled={false} route="/products" />
             </div>
           </div>
           <div className="flex-1 flex justify-center">
