@@ -16,4 +16,13 @@ app.get("/", async (_, res) => {
   }
 });
 
+app.post("/", async (req, res) => {
+  try {
+    await Product.create(req.body);
+    return res.status(201).json(req.body);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = app;

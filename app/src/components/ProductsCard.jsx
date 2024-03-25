@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setSingleProduct } from "../store/productSlice";
-import { ButtonLink } from "./ButtonLink";
+import { Buttons } from "./Buttons";
 import clsx from "clsx";
 
 export const ProductsCard = () => {
@@ -20,9 +20,9 @@ export const ProductsCard = () => {
             <div className="relative z-30 bg-white rounded-md min-h-60 flex items-center justify-center">
               <img
                 className="hideProduct max-h-60 w-full object-contain p-2"
-                src={`http://localhost:3000${product.images[0]}`}
+                src={`http://localhost:3000${product.frontImage}`}
               />
-              <ButtonLink
+              <Buttons
                 addClass="text-white absolute showButton opacity-0 bg-primary max-w-fit self-center"
                 filled={true}
                 text="Dettagli"
