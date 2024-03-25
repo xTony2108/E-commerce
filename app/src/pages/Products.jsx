@@ -3,7 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { useAxios } from "../hooks/useAxios";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getProducts, setLoading } from "../store/productSlice";
+import { setProducts, _setProducts, setLoading } from "../store/productSlice";
 import PacmanLoader from "react-spinners/PacmanLoader";
 
 export const Products = () => {
@@ -16,13 +16,14 @@ export const Products = () => {
   });
 
   useEffect(() => {
-    dispatch(getProducts(data));
+    dispatch(setProducts(data));
     dispatch(setLoading(loading));
+    dispatch(_setProducts(data));
   }, [data, loading]);
   return (
     <>
       <Navbar />
-      <div className="bg-primary pb-20 relative">
+      <div className="bg-primary relative">
         <Outlet />
       </div>
       {loading && (

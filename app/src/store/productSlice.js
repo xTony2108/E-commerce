@@ -4,21 +4,26 @@ const productSlice = createSlice({
   name: "product",
   initialState: {
     products: null,
-    product: null,
+    singleProduct: null,
     loading: false,
+    _products: null,
   },
   reducers: {
-    getProducts: (state, action) => {
+    setProducts: (state, action) => {
       state.products = action.payload;
     },
-    setProduct: (state, action) => {
-      state.product = action.payload;
+    setSingleProduct: (state, action) => {
+      state.singleProduct = action.payload;
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
+    },
+    _setProducts: (state, action) => {
+      state._products = action.payload;
     },
   },
 });
 
 export default productSlice.reducer;
-export const { getProducts, setProduct, setLoading } = productSlice.actions;
+export const { setProducts, setSingleProduct, setLoading, _setProducts } =
+  productSlice.actions;

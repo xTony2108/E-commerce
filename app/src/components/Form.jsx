@@ -10,7 +10,6 @@ import { validateInput } from "../utility/UserValidation";
 import { isFormCompiled } from "../utility/formValidation";
 import {
   notifyAxiosError,
-  notifyError,
   notifySuccess,
 } from "../utility/toastifyNotification";
 import { useDispatch } from "react-redux";
@@ -41,14 +40,11 @@ export const Form = ({ isLogin }) => {
 
   //chiamata registrazione
 
-  const { data, error, loading, update } = useAxios(
-    "http://localhost:3000/api/users/register",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      data: register,
-    }
-  );
+  const { data, error, loading, update } = useAxios("/api/users/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    data: register,
+  });
 
   //chiamata login
 
@@ -57,7 +53,7 @@ export const Form = ({ isLogin }) => {
     error: loginError,
     loading: loginLoading,
     update: loginUpdate,
-  } = useAxios("http://localhost:3000/api/users/login", {
+  } = useAxios("/api/users/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     data: loginForm,
