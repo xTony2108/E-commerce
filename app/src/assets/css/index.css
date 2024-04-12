@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+  }
+  ::selection {
+    background-color: #fa4f09;
+    color: white;
+  }
+  ::-moz-selection {
+    background-color: #fa4f09;
+    color: white;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Prosto One", sans-serif;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .scrollText::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollText::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  .scrollText::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@layer components {
+  input::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    background-color: #858585;
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    margin: 0 8px !important;
+  }
+
+  .swiper-pagination {
+    position: relative !important;
+  }
+  .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #fa4f09;
+    position: relative;
+  }
+  .swiper-pagination .swiper-pagination-bullet-active::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    bottom: -6px;
+    right: -6px;
+    border: 1px solid #fa4f09;
+    border-radius: 100%;
+  }
+
+  .orangeDot {
+    position: relative;
+    display: inline-block;
+    width: 21px;
+    height: 14px;
+  }
+
+  .orangeDot::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fa4f09;
+    animation: movingDotRight 3s linear infinite;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .orangeDot::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #fa4f09;
+    animation: movingDotLeft 3s linear infinite;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .scaleBg {
+    transition: all 0.3s ease-in-out;
+  }
+  .bgContainer:hover .scaleBg {
+    transform: scale(1.2);
+  }
+
+  .addToCart::before,
+  .addToCart::after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    background-color: #fa4f09;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .addToCart::before {
+    left: 0;
+  }
+  .addToCart:hover::before,
+  .addToCart:hover::after {
+    width: 50%;
+  }
+
+  .addToCartIcon {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .addToCart:hover .addToCartIcon {
+    color: white;
+  }
+
+  .buttonFillWhite::after {
+    position: absolute;
+    content: "";
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 150%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: white;
+    transition: all 0.7s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    z-index: -1;
+    opacity: 1;
+  }
+
+  .buttonFillWhite:hover {
+    color: #fa4f09;
+    transition: all 0.7s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  }
+  .buttonFillWhite:hover::after {
+    bottom: -50%;
+  }
+
+  .buttonFillOrange::after {
+    position: absolute;
+    content: "";
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 150%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: #fa4f09;
+    transition: all 0.7s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    z-index: -1;
+    opacity: 1;
+  }
+
+  .buttonFillOrange:hover {
+    color: white;
+    transition: all 0.7s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  }
+  .buttonFillOrange:hover::after {
+    bottom: -50%;
+  }
+
+  .barBg::after {
+    position: absolute;
+    content: "";
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 0.375rem;
+    opacity: 1;
+    z-index: 10;
+    background: rgb(202, 0, 245);
+    background: linear-gradient(
+      135deg,
+      rgba(202, 0, 245, 1) 0%,
+      rgba(122, 0, 245, 1) 50%,
+      rgba(0, 114, 245, 1) 100%
+    );
+  }
+}
+
+@keyframes movingDotLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(7px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes movingDotRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-7px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

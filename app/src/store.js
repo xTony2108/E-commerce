@@ -1,10 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./store/authSlice";
-import productReducer from "./store/productSlice";
+import { configureStore } from "@reduxjs/toolkit/react";
+import authReducer from "./features/auth/authSlice";
+import { emptyApiSlice } from "./services/emptyApiSlice";
+import categoryReducer from "./features/category/categorySlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
-    product: productReducer,
+    category: categoryReducer,
+    [emptyApiSlice.reducerPath]: emptyApiSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(emptyApiSlice.middleware),
 });

@@ -4,18 +4,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        lato: ["Lato", "sans-serif"],
+        prosto: ["Prosto One", "sans-serif"],
       },
       backgroundImage: {
-        bottomCta: `url("./src/assets/images/bottomCta/bg.jpg")`,
+        bottomCta: `url("/src/assets/images/bottomCta/bg.webp")`,
+        adLeft: `url("/src/assets/images/ad/adLeft.webp")`,
+        adRight: `url("/src/assets/images/ad/adRight.webp")`,
       },
       colors: {
-        primary: "#121420",
-        gghViolet: "#7A00F5",
-        gghBlue: "#2A00F5",
-        gghLightBlue: "#0072F5",
-        gghPink: "#CA00F5",
-        gghYellow: "#F5BA00",
+        primary: "#fa4f09",
+        grayBg: "#191919",
+        border: "#414141",
+        priceRed: "#FF2B2B",
+        priceGray: "#999999",
       },
     },
   },

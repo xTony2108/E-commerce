@@ -1,25 +1,23 @@
-import { HeroSection } from "../components/HeroSection";
-import { Description } from "../components/Description";
-import { SecondDescription } from "../components/SecondDescription";
-import { ThirdDescription } from "../components/ThirdDescription";
-import { BottomCta } from "../components/BottomCta";
-import { FaqSection } from "../components/FaqSection";
-import { Footer } from "../components/Footer";
+import { CategoriesSection } from "../components/home/CategoriesSection";
+import { HeroSection } from "../components/home/HeroSection";
+import { LatestArrives } from "../components/home/LatestArrives";
+import { AdSection } from "../components/home/AdSection";
+import { Brands } from "../components/home/Brands";
+import { Header } from "../components/layout/Header";
+import { Navbar } from "../components/layout/Navbar";
+import { Footer } from "../components/layout/Footer";
 
 export const Home = () => {
   return (
     <>
-      <HeroSection />
+      <Header />
+      <Navbar />
       <main>
-        <div className="bg-primary py-32">
-          <div className="max-w-screen-2xl m-auto max-2xl:max-w-screen-lg">
-            <Description />
-            <SecondDescription />
-            <ThirdDescription />
-          </div>
-        </div>
-        <FaqSection />
-        <BottomCta />
+        <HeroSection />
+        <CategoriesSection />
+        <AdSection />
+        <LatestArrives />
+        <Brands />
       </main>
       <Footer />
     </>

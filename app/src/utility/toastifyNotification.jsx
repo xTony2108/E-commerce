@@ -1,5 +1,4 @@
 import { Flip, toast } from "react-toastify";
-import { ErrorNotification } from "../components/ErrorNotification";
 
 export const notifyError = (errors) => {
   toast.error(<ErrorNotification errors={errors} />, {
