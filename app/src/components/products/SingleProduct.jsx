@@ -12,9 +12,13 @@ import { ShareLinks } from "./ShareLinks";
 export const SingleProduct = () => {
   const { data: products = [] } = useGetAllProductsQuery();
   const param = useParams();
-
+  console.log(param);
   const product = useMemo(
-    () => products.find((product) => product.name === param.productName),
+    () =>
+      products.find(
+        (product) =>
+          product.name === decodeURI(param.productName).replaceAll("_", " ")
+      ),
     [param]
   );
 

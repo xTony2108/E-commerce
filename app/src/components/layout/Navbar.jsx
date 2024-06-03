@@ -22,8 +22,8 @@ export const Navbar = () => {
     <>
       <nav
         className={clsx(
-          "bg-grayBg z-20 w-full overflow-hidden animate__animated sticky ",
-          isSticky && " animate__fadeInDown top-0"
+          "bg-grayBg z-50 w-full overflow-hidden animate__animated sticky",
+          isSticky && "animate__fadeInDown -top-1"
         )}
       >
         <div className="flex items-center justify-between max-w-screen-2xl m-auto py-6 gap-8">

@@ -1,8 +1,39 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SearchBar } from "../SearchBar";
 import { Link } from "react-router-dom";
+import { useGetUserDataQuery } from "../../services/product/userSlice";
+import { internalMemory } from "../../utility/internalMemory";
+import { useDispatch } from "react-redux";
+import { logout } from "../../features/auth/authSlice";
+import { Flip, toast } from "react-toastify";
+import { useEffect } from "react";
 
 export const Header = () => {
+  const dispatch = useDispatch();
+  const token = internalMemory.get("token");
+
+  const { data: userInfo, error } = useGetUserDataQuery(undefined, {
+    skip: token ? false : true,
+    pollingInterval: 3600000,
+  });
+
+  useEffect(() => {
+    if (error && error?.status == 401) {
+      console.log(error);
+      dispatch(logout());
+      toast.error("Sessione scaduta, effettua il login", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        transition: Flip,
+      });
+    }
+  }, [error, userInfo]);
+
   return (
     <>
       <header className="bg-black">
@@ -27,7 +58,7 @@ export const Header = () => {
                 />
               </div>
               <div className="h-full text-white px-6">
-                <span>Profilo</span>
+                <span>{userInfo ? userInfo.name : "Profilo"}</span>
               </div>
             </Link>
             <div className="flex items-center bg-transparent rounded-full border border-[#414141]">

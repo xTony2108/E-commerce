@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { FormInput } from "./FormInput";
-import { Link, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import { FormButton } from "../buttons/FormButton";
-import { ToastContainer, toast } from "react-toastify";
-import clsx from "clsx";
+import { toast } from "react-toastify";
 import { useAxios } from "../../hooks/useAxios";
 import { validateInput } from "../../utility/userValidation";
 import { isFormCompiled } from "../../utility/formValidation";
@@ -25,12 +23,11 @@ export const Form = ({ isLogin }) => {
     password: "",
     confirmPassword: "",
     name: "",
-    lastName: "",
-    country: "",
-    address: "",
-    zipCode: "",
-    phone: "+39 ",
-    civic: "",
+    // country: "",
+    // address: "",
+    // zipCode: "",
+    // phone: "+39 ",
+    // civic: "",
   });
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -105,16 +102,15 @@ export const Form = ({ isLogin }) => {
     }
   };
 
-  const handleRegisterSubmit = async () => {
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
     toast.dismiss();
-    if (!isFormCompiled(register, page)) {
-      await update();
-    } else {
-      validateInput(register, page);
-    }
+    await update();
   };
 
-  const handleLoginSubmit = async () => {
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    toast.dismiss();
     await loginUpdate();
   };
 
@@ -128,6 +124,8 @@ export const Form = ({ isLogin }) => {
           notifySuccess(data?.message);
         }, 1);
       } else {
+        console.log(error?.response?.data?.message);
+
         notifyAxiosError(error?.response?.data?.message);
       }
     }
@@ -151,18 +149,6 @@ export const Form = ({ isLogin }) => {
 
   return (
     <>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover
-        toastStyle={{ backgroundColor: "#080808", color: "white" }}
-      />
       {!isLogin ? (
         <div className="flex flex-col bg-black rounded-xl border border-border max-w-screen-2xl m-auto w-full p-16">
           <div className="flex gap-6">
@@ -176,11 +162,20 @@ export const Form = ({ isLogin }) => {
                     Benvenuto
                   </span>
                   <FormInput
+                    type="text"
+                    name="name"
+                    placeholder="Nome"
+                    value={register.name}
+                    handlerFunc={handleRegisterInputChange}
+                    autoComplete="name"
+                    addClass="w-full"
+                  />
+                  <FormInput
                     type="email"
                     name="email"
                     placeholder="Email"
-                    value={loginForm.email}
-                    handlerFunc={handleLoginInputChange}
+                    value={register.email}
+                    handlerFunc={handleRegisterInputChange}
                     autoComplete="email"
                     addClass="w-full"
                   />
@@ -188,8 +183,8 @@ export const Form = ({ isLogin }) => {
                     type="password"
                     name="password"
                     placeholder="Password"
-                    value={loginForm.password}
-                    handlerFunc={handleLoginInputChange}
+                    value={register.password}
+                    handlerFunc={handleRegisterInputChange}
                     autoComplete="new-password"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -198,8 +193,8 @@ export const Form = ({ isLogin }) => {
                     type="password"
                     name="confirmPassword"
                     placeholder="Conferma password"
-                    value={loginForm.confirmPassword}
-                    handlerFunc={handleLoginInputChange}
+                    value={register.confirmPassword}
+                    handlerFunc={handleRegisterInputChange}
                     autoComplete="new-password"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
@@ -207,13 +202,12 @@ export const Form = ({ isLogin }) => {
                   <FormButton
                     text="Registrati"
                     isButton={true}
-                    marginTop="4"
-                    handler={handleLoginSubmit}
+                    handler={handleRegisterSubmit}
                   />
                 </div>
               </form>
               <span className="text-white text-center block">
-                Non sei registrato?
+                Sei già registrato?
               </span>
               <FormButton text="Login" isButton={false} path="/login" />
             </div>

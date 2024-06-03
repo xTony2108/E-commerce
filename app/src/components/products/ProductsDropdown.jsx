@@ -12,6 +12,7 @@ export const ProductsDropdown = ({ pagination, state }) => {
   const { setPage } = pagination;
   const { query, setQuery } = state;
   const categories = getCategories(true);
+
   const handleSelectFilter = (e) => {
     dispatch(removeCategory());
     setQuery(e.target.value);
