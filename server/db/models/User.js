@@ -7,36 +7,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    lastName: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
       unique: true,
     },
     password: {
-      type: String,
-      required: true,
-    },
-    country: {
-      type: String,
-      required: true,
-    },
-    address: {
-      type: String,
-      required: true,
-    },
-    civic: {
-      type: String,
-      required: true,
-    },
-    zipCode: {
-      type: String,
-      required: true,
-    },
-    phone: {
       type: String,
       required: true,
     },
@@ -47,3 +23,24 @@ const userSchema = new Schema(
 const User = model("User", userSchema);
 
 module.exports = User;
+
+// country: {
+//   type: String,
+//   required: true,
+// },
+// address: {
+//   type: String,
+//   required: true,
+// },
+// civic: {
+//   type: String,
+//   required: true,
+// },
+// zipCode: {
+//   type: String,
+//   required: true,
+// },
+// phone: {
+//   type: String,
+//   required: true,
+// },

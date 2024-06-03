@@ -5,14 +5,16 @@ import { PaginatedButtons } from "./PaginatedButtons";
 import { useGetAllProductsQuery } from "../../services/product/productSlice";
 import { PageLocation } from "../layout/PageLocation";
 import { ProductsDropdown } from "./ProductsDropdown";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCategory } from "../../features/category/categorySlice";
 export const ProductsList = () => {
+  const dispatch = useDispatch();
   const { data: products = [] } = useGetAllProductsQuery();
   const linkCategory = useSelector((state) => state.category.categoryName);
 
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState(linkCategory || "default");
-  console.log(query);
+
   const scrollRef = useRef();
 
   const itemsPerPage = 9;
@@ -37,6 +39,8 @@ export const ProductsList = () => {
       return Math.ceil(paginatedProducts.length / itemsPerPage);
     } else return Math.ceil(products.length / itemsPerPage);
   }, [paginatedProducts, query]);
+
+  dispatch(removeCategory());
 
   return (
     <>

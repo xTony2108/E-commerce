@@ -5,6 +5,7 @@ const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../../db/models/User");
+const { verifyUserAuth } = require("../../middleware/verifyUserAuth");
 const { SECRET_KEY } = process.env;
 
 /**
@@ -16,10 +17,6 @@ app.post("/register", async (req, res) => {
     name: Joi.string().required().messages({
       "any.required": "• Inserire nome",
       "string.empty": "• Inserire nome",
-    }),
-    lastName: Joi.string().required().messages({
-      "any.required": "• Inserire cognome",
-      "string.empty": "• Inserire cognome",
     }),
     email: Joi.string().email().required().messages({
       "any.required": "• Inserire un indirizzo email valido",
@@ -39,36 +36,55 @@ app.post("/register", async (req, res) => {
         "string.pattern.base":
           "• Password deve contenere una lettera maiuscola, una minuscola, un numero e almeno 8 caratteri",
       }),
-    country: Joi.string().required().messages({
-      "any.required": "• Inserire paese",
-      "string.empty": "• Inserire paese",
-    }),
-    address: Joi.string().required().messages({
-      "any.required": "• Inserire un indirizzo valido",
-      "string.empty": "• Inserire un indirizzo valido",
-    }),
-    civic: Joi.string().required().messages({
-      "any.required": "• Inserire civico",
-      "string.empty": "• Inserire civico",
-    }),
-    zipCode: Joi.string().required().min(5).messages({
-      "any.required": "• Inserire cap valido",
-      "string.empty": "• Inserire cap valido",
-      "string.min": "• Inserire cap valido",
-    }),
-    phone: Joi.string()
+    confirmPassword: Joi.string()
       .required()
-      .pattern(/^\+?(39|0039)?[ ]?[0-9]{2,4}[ ]?[0-9]{6,8}$/)
+      .pattern(
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).{8,}$/
+      )
       .messages({
-        "any.required": "• Inserire numero di cellulare valido",
-        "string.empty": "• Inserire numero di cellulare valido",
-        "string.pattern.base": "• Inserire numero di cellulare valido",
+        "any.required": "• Inserire conferma password",
+        "string.empty": "• Inserire conferma password",
+        "string.pattern.base":
+          "• Password deve contenere una lettera maiuscola, una minuscola, un numero e almeno 8 caratteri",
       }),
+    // country: Joi.string().required().messages({
+    //   "any.required": "• Inserire paese",
+    //   "string.empty": "• Inserire paese",
+    // }),
+    // address: Joi.string().required().messages({
+    //   "any.required": "• Inserire un indirizzo valido",
+    //   "string.empty": "• Inserire un indirizzo valido",
+    // }),
+    // civic: Joi.string().required().messages({
+    //   "any.required": "• Inserire civico",
+    //   "string.empty": "• Inserire civico",
+    // }),
+    // zipCode: Joi.string().required().min(5).messages({
+    //   "any.required": "• Inserire cap valido",
+    //   "string.empty": "• Inserire cap valido",
+    //   "string.min": "• Inserire cap valido",
+    // }),
+    // phone: Joi.string()
+    //   .required()
+    //   .pattern(/^\+?(39|0039)?[ ]?[0-9]{2,4}[ ]?[0-9]{6,8}$/)
+    //   .messages({
+    //     "any.required": "• Inserire numero di cellulare valido",
+    //     "string.empty": "• Inserire numero di cellulare valido",
+    //     "string.pattern.base": "• Inserire numero di cellulare valido",
+    //   }),
   });
   try {
     const user = await schema.validateAsync(req.body);
 
     user.email = user.email.toLowerCase();
+
+    const comparePassword = user.password === user.confirmPassword;
+
+    if (!comparePassword)
+      return res
+        .status(403)
+        .json({ message: "Le password inserite non corrispondono!" });
+
     user.password = await bcrypt.hash(user.password, 12);
 
     const findUser = await User.findOne({ email: user.email }, "email", {
@@ -136,6 +152,16 @@ app.post("/login", async (req, res) => {
       user: { email: user.email, id: user._id, token },
       message: "Login effettuato con successo!",
     });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: error.message });
+  }
+});
+
+app.get("/me", verifyUserAuth, async (req, res) => {
+  const { user } = req;
+  try {
+    return res.status(200).json(user);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: error.message });

@@ -30,7 +30,9 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
               </div>
               <div className="p-10 py-4">
                 <Link
-                  to={`/products/${product.name}`}
+                  to={`/products/${encodeURIComponent(
+                    product.name.replaceAll(" ", "_")
+                  )}`}
                   onClick={() => dispatch(setSingleProduct(product))}
                   className="text-white text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                 >

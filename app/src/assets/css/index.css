@@ -15,6 +15,14 @@
     background-color: #fa4f09;
     color: white;
   }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px black inset; /* Cambia 'black' con il colore di sfondo desiderato */
+    box-shadow: 0 0 0 1000px black inset; /* Cambia 'white' con il colore di sfondo desiderato */
+    -webkit-text-fill-color: #fff; /* Cambia '#000' con il colore del testo desiderato */
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: white;
+  }
   h1,
   h2,
   h3,
