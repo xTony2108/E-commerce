@@ -1,5 +1,6 @@
 const express = require("express");
 const { Product } = require("../../db");
+const { verifyUserAuth } = require("../../middleware/verifyUserAuth");
 const app = express.Router();
 
 /**

@@ -2,17 +2,17 @@ import { useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Buttons } from "../buttons/Buttons";
 import { useGetAllProductsQuery } from "../../services/product/productSlice";
-import { Stars } from "./Stars";
+import { Stars } from "./SVG/Stars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import { Footer } from "../layout/Footer";
 import { PageLocation } from "../layout/PageLocation";
-import { ShareLinks } from "./ShareLinks";
+import { ShareLinks } from "../buttons/ShareLinks";
+import { ProductQuantity } from "../buttons/ProductQuantity";
 
 export const SingleProduct = () => {
   const { data: products = [] } = useGetAllProductsQuery();
   const param = useParams();
-  console.log(param);
   const product = useMemo(
     () =>
       products.find(
@@ -41,6 +41,21 @@ export const SingleProduct = () => {
     bigImageRef.current.src = image;
   };
 
+  const removeQuantity = () => {
+    setQuantity((prevstate) => (prevstate <= 0 ? 0 : prevstate - 1));
+  };
+
+  const showQuantity = (e) => {
+    setQuantity(
+      e.target.value >= product.qnt ? product.qnt : Number(e.target.value)
+    );
+  };
+
+  const addQuantity = () => {
+    setQuantity((prevState) =>
+      prevState >= product.qnt ? product.qnt : prevState + 1
+    );
+  };
   return (
     <>
       {product && (
@@ -75,7 +90,7 @@ export const SingleProduct = () => {
                 {product?.name}
               </h1>
               <Stars product={product} />
-              {product.discount.isDiscounted ? (
+              {product.offers.isActive ? (
                 <div className="flex items-center gap-3">
                   <span className="text-priceGray font-prosto text-3xl line-through decoration-2">
                     {product.price}€
@@ -83,7 +98,7 @@ export const SingleProduct = () => {
                   <span className="text-white font-prosto text-4xl">
                     {(
                       product.price *
-                      (1 - product.discount.amount / 100)
+                      (1 - product.offers.discountPercentage / 100)
                     ).toFixed(2)}
                     €
                   </span>
@@ -114,40 +129,12 @@ export const SingleProduct = () => {
                 </Link>
               </span>
               <ShareLinks />
-              <div className="flex items-center gap-1">
-                <button
-                  className="text-white text-center text-lg border border-border h-10 w-12 rounded-lg outline-none"
-                  onClick={() =>
-                    setQuantity((prevstate) =>
-                      prevstate <= 0 ? 0 : prevstate - 1
-                    )
-                  }
-                >
-                  -
-                </button>
-                <input
-                  className="text-white text-center text-lg border border-border h-10 w-12 rounded-lg bg-transparent outline-none "
-                  type="number"
-                  value={quantity}
-                  onChange={(e) =>
-                    setQuantity(
-                      e.target.value >= product.qnt
-                        ? product.qnt
-                        : Number(e.target.value)
-                    )
-                  }
-                />
-                <button
-                  className="text-white text-center text-lg border border-border h-10 w-12 rounded-lg outline-none"
-                  onClick={() =>
-                    setQuantity((prevState) =>
-                      prevState >= product.qnt ? product.qnt : prevState + 1
-                    )
-                  }
-                >
-                  +
-                </button>
-              </div>
+              <ProductQuantity
+                add={addQuantity}
+                remove={removeQuantity}
+                show={showQuantity}
+                quantity={quantity}
+              />
               <div className="flex-grow flex items-end">
                 <Buttons
                   type="button"

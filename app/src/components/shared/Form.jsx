@@ -6,10 +6,7 @@ import { toast } from "react-toastify";
 import { useAxios } from "../../hooks/useAxios";
 import { validateInput } from "../../utility/userValidation";
 import { isFormCompiled } from "../../utility/formValidation";
-import {
-  notifyAxiosError,
-  notifySuccess,
-} from "../../utility/toastifyNotification";
+import { notifyError, notifySuccess } from "../../utility/toastifyNotification";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
 import loginImage from "../../assets/images/login-register/login.jpg";
@@ -124,9 +121,7 @@ export const Form = ({ isLogin }) => {
           notifySuccess(data?.message);
         }, 1);
       } else {
-        console.log(error?.response?.data?.message);
-
-        notifyAxiosError(error?.response?.data?.message);
+        notifyError(error?.response?.data?.message);
       }
     }
   }, [error, data, loading]);
@@ -142,7 +137,7 @@ export const Form = ({ isLogin }) => {
           notifySuccess(loginData?.message);
         }, 1);
       } else {
-        notifyAxiosError(loginError?.response?.data?.message);
+        notifyError(loginError?.response?.data?.message);
       }
     }
   }, [loginError, loginData, loginLoading]);
@@ -158,7 +153,7 @@ export const Form = ({ isLogin }) => {
             <div className="flex flex-col justify-between flex-1 basis-2/6">
               <form>
                 <div className="flex flex-col items-center gap-12">
-                  <span className="text-white text-4xl font-bold w-full block font-prosto">
+                  <span className="text-white text-4xl font-bold w-full block font-prosto text-center">
                     Benvenuto
                   </span>
                   <FormInput
@@ -222,7 +217,7 @@ export const Form = ({ isLogin }) => {
             <div className="flex flex-col justify-between flex-1 basis-2/6">
               <form>
                 <div className="flex flex-col items-center gap-12">
-                  <span className="text-white text-4xl font-bold w-full block font-prosto">
+                  <span className="text-white text-4xl font-bold w-full block font-prosto text-center">
                     Bentornato
                   </span>
                   <FormInput

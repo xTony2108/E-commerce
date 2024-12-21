@@ -12,7 +12,7 @@ export const HeroSection = () => {
 
   const discountedProducts = useMemo(() => {
     return products
-      .filter((product) => product.discount.isDiscounted === true)
+      .filter((product) => product.offers.isActive === true)
       .slice(0, 6);
   }, [products]);
 

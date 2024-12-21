@@ -18,6 +18,9 @@ export default {
         priceRed: "#FF2B2B",
         priceGray: "#999999",
       },
+      minHeight: {
+        fullWithoutBars: "calc(100svh - 172px)",
+      },
     },
   },
   plugins: [],

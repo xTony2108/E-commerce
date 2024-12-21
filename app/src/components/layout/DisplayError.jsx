@@ -1,5 +1,4 @@
 export const DisplayError = ({ error }) => {
-  console.log(error);
   return (
     <>
       <div className="h-screen flex flex-col gap-12 justify-center items-center bg-black">

@@ -1,6 +1,6 @@
 import { Flip, toast } from "react-toastify";
 
-export const notifyError = (errors) => {
+export const notifyErrors = (errors) => {
   toast.error(<ErrorNotification errors={errors} />, {
     position: "top-center",
     autoClose: 5000,
@@ -26,7 +26,7 @@ export const notifySuccess = (message) => {
   });
 };
 
-export const notifyAxiosError = (error) => {
+export const notifyError = (error) => {
   toast.error(error, {
     position: "top-center",
     autoClose: 5000,
