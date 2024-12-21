@@ -78,13 +78,13 @@ export const Cart = () => {
                       </button>
                     </div>
                     <div className="flex justify-end border-t border-border pb-4 pt-8 gap-20">
-                      <div className="flex gap-4">
+                      <div className="flex gap-12">
                         <FormInput
                           type="text"
                           name="discount"
                           placeholder="Codice sconto"
                           autoComplete="discount"
-                          addClass="text-sm w-auto"
+                          addClass="text-sm w-56"
                         />
                         <Buttons type="button" text="Applica codice" />
                       </div>

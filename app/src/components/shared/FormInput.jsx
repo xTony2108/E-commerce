@@ -27,7 +27,7 @@ export const FormInput = ({
       {type !== "checkbox" && type !== "password" && (
         <input
           className={clsx(
-            "bg-transparent flex items-center w-full border-b border-border pb-4 focus-within:border-primary outline-none text-white placeholder:text-white",
+            "bg-transparent flex items-center border-b border-border pb-4 focus-within:border-primary outline-none text-white placeholder:text-white",
             addClass && addClass
           )}
           type={type}
@@ -64,9 +64,12 @@ export const FormInput = ({
         </label>
       )}
       {type === "password" && (
-        <div className="bg-transparent flex items-center w-full border-b border-border pb-4 focus-within:border-primary">
+        <div className="w-full bg-transparent flex items-center border-b border-border pb-4 focus-within:border-primary">
           <input
-            className="bg-transparent rounded-md outline-none w-full text-white placeholder:text-white"
+            className={clsx(
+              "bg-transparent rounded-md outline-none text-white placeholder:text-white",
+              addClass && addClass
+            )}
             type={clsx(!showPw && type, showPw && "text")}
             name={name}
             placeholder={placeholder}
