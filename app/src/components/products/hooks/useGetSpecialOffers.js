@@ -25,15 +25,17 @@ export const useGetSpecialOffers = () => {
       return (
         products &&
         products?.filter(
-          (product) => product.specialOffer.isSpecialOffer === true
-        )
+          (product) => product.offers.isSpecial === true
+        ).sort((a,b) => a - b).slice(0,2)
       );
     }
   }, [products]);
 
+  
+
   useEffect(() => {
     if (products && products.length > 0) {
-      setDeadLine(specialOffers[0]?.specialOffer?.expirationDate);
+      setDeadLine(specialOffers[0]?.offers?.endDate);
     }
   }, [specialOffers]);
 

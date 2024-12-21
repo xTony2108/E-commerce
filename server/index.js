@@ -13,10 +13,15 @@ const { SERVER_PORT } = process.env;
 
 app.use(express.static(path.join(__dirname, "..", "/app")));
 
-app.use(cors({ origin: "http://localhost:5173" }));
+const corsOptions = { 
+  origin: "http://localhost:5173",
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+};
+
+app.use(cors(corsOptions));
 
 app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ policy: "same-site" }));
+app.use(helmet.crossOriginResourcePolicy({ policy: "same-origin" }));
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 

@@ -14,12 +14,10 @@ export const Header = () => {
 
   const { data: userInfo, error } = useGetUserDataQuery(undefined, {
     skip: token ? false : true,
-    pollingInterval: 3600000,
   });
 
   useEffect(() => {
     if (error && error?.status == 401) {
-      console.log(error);
       dispatch(logout());
       toast.error("Sessione scaduta, effettua il login", {
         position: "top-center",
@@ -61,8 +59,8 @@ export const Header = () => {
                 <span>{userInfo ? userInfo.name : "Profilo"}</span>
               </div>
             </Link>
-            <div className="flex items-center bg-transparent rounded-full border border-[#414141]">
-              <Link className="flex items-center">
+            <div className="flex items-center bg-transparent rounded-full border border-border">
+              <Link to="/cart" className="flex items-center">
                 <div className="py-3.5 px-5 rounded-l-full">
                   <FontAwesomeIcon
                     icon="fa-solid fa-cart-shopping"

@@ -15,6 +15,7 @@ import {
   faCaretDown,
   faCaretRight,
   faBasketShopping,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faXTwitter,
@@ -45,7 +46,8 @@ library.add(
   faXTwitter,
   faInstagram,
   faLinkedinIn,
-  faPinterestP
+  faPinterestP,
+  faTrashCan
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(

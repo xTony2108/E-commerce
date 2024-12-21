@@ -29,12 +29,12 @@ export const SpecialOffersCard = ({ arr }) => {
           <span className="text-xl font-semibold text-primary">
             {(
               Number(product.price) *
-              (1 - product.specialOffer.amount / 100)
+              (1 - product.offers.discountPercentage / 100)
             ).toFixed(2)}
             €
           </span>
           <span className="text-priceRed font-semibold">
-            {-(product.price * (product.specialOffer.amount / 100)).toFixed(2)}€
+            {-(product.price * (product.offers.discountPercentage / 100)).toFixed(2)}€
           </span>
         </div>
         <span className="text-xl text-white font-semibold pb-10">

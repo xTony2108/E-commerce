@@ -4,6 +4,7 @@ import { SpecialOffersCard } from "./SpecialOffersCard";
 export const SpecialOffers = () => {
   const { days, hours, minutes, seconds, specialOffers } =
     useGetSpecialOffers();
+
   return (
     <div className="bg-[#191919] p-6 rounded-xl flex-1 basis-1/4">
       <span className="inline-block text-white text-2xl font-semibold">
@@ -22,25 +23,25 @@ export const SpecialOffers = () => {
             <span className="text-black flex items-center justify-center bg-primary rounded-full w-[4rem] h-[4rem] font-semibold">
               -{days}
             </span>
-            <span className="text-[#a6a6a6] font-prosto text-sm">Days</span>
+            <span className="text-[#a6a6a6] font-prosto text-sm">Giorni</span>
           </div>
           <div className="flex flex-col items-center justify-center gap-2">
             <span className="text-black flex items-center justify-center bg-primary rounded-full w-[4rem] h-[4rem] font-semibold">
               -{hours}
             </span>
-            <span className="text-[#a6a6a6] font-prosto text-sm">Hours</span>
+            <span className="text-[#a6a6a6] font-prosto text-sm">Ore</span>
           </div>
           <div className="flex flex-col items-center justify-center gap-2">
             <span className="text-black flex items-center justify-center bg-primary rounded-full w-[4rem] h-[4rem] font-semibold">
               -{minutes}
             </span>
-            <span className="text-[#a6a6a6] font-prosto text-sm">Minutes</span>
+            <span className="text-[#a6a6a6] font-prosto text-sm">Minuti</span>
           </div>
           <div className="flex flex-col items-center justify-center gap-2">
             <span className="text-black flex items-center justify-center bg-primary rounded-full w-[4rem] h-[4rem] font-semibold">
               -{seconds}
             </span>
-            <span className="text-[#a6a6a6] font-prosto text-sm">Seconds</span>
+            <span className="text-[#a6a6a6] font-prosto text-sm">Secondi</span>
           </div>
         </div>
       </div>

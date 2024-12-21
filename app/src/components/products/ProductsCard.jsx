@@ -1,16 +1,13 @@
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css/pagination";
 import "swiper/css";
 import "swiper/css/autoplay";
-import { Stars } from "./Stars";
+import { Stars } from "../products/SVG/Stars";
+import { AddToCartButton } from "../buttons/AddToCartButton";
 
 export const ProductsCard = ({ productsArray, isSwiper }) => {
-  const dispatch = useDispatch();
-
   return (
     <>
       {!isSwiper ? (
@@ -38,7 +35,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                 >
                   {product.name}
                 </Link>
-                {product.discount.isDiscounted ? (
+                {product.offers.isActive ? (
                   <div className="pt-4 flex items-center gap-3">
                     <span className="text-priceGray font-semibold text-lg line-through decoration-2">
                       {product.price}€
@@ -46,7 +43,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                     <span className="text-primary font-semibold text-xl">
                       {(
                         product.price *
-                        (1 - product.discount.amount / 100)
+                        (1 - product.offers.discountPercentage / 100)
                       ).toFixed(2)}
                       €
                     </span>
@@ -74,13 +71,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
               </div>
             </div>
             <div className="border-t border-border flex items-center justify-center addToCart relative z-20 rounded-b-xl overflow-hidden">
-              <button className="text-white font-semibold py-6 relative z-20">
-                <FontAwesomeIcon
-                  icon="fa-solid fa-cart-shopping"
-                  className="text-primary mr-2 addToCartIcon"
-                />
-                Aggiungi al carrello
-              </button>
+              <AddToCartButton product={product} />
             </div>
           </div>
         ))
@@ -116,7 +107,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                       >
                         {product.name}
                       </Link>
-                      {product.discount ? (
+                      {product.offers.isActive ? (
                         <div className="pt-5 flex items-center gap-3">
                           <span className="text-priceGray font-semibold text-lg line-through decoration-2">
                             {product.price}€

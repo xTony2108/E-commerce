@@ -145,7 +145,7 @@ app.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign({ email: user.email, id: user._id }, SECRET_KEY, {
-      expiresIn: data.remember ? "999y" : "2h",
+      expiresIn: data.remember ? "999y" : "5s",
     });
 
     return res.status(200).json({

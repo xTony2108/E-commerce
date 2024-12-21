@@ -7,6 +7,7 @@ import { PageLocation } from "../layout/PageLocation";
 import { ProductsDropdown } from "./ProductsDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCategory } from "../../features/category/categorySlice";
+import { PageHeading } from "../layout/PageHeading";
 export const ProductsList = () => {
   const dispatch = useDispatch();
   const { data: products = [] } = useGetAllProductsQuery();
@@ -46,11 +47,7 @@ export const ProductsList = () => {
     <>
       <div className="bg-black py-20">
         <div className="max-w-screen-2xl m-auto">
-          <div className="flex items-center justify-center gap-3">
-            <span className="relative orangeDot"></span>
-            <h2 className="text-white text-4xl font-semibold">Prodotti</h2>
-            <span className="relative orangeDot"></span>
-          </div>
+          <PageHeading page="Prodotti" />
           <PageLocation pages={["Prodotti"]} />
           <div className="flex justify-between items-center border-b border-border pb-8 text-white font-semibold">
             <span>
