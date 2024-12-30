@@ -181,6 +181,7 @@ export const Form = ({ isLogin }) => {
                     value={register.password}
                     handlerFunc={handleRegisterInputChange}
                     autoComplete="new-password"
+                    addClass="w-full"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                   />
@@ -191,6 +192,7 @@ export const Form = ({ isLogin }) => {
                     value={register.confirmPassword}
                     handlerFunc={handleRegisterInputChange}
                     autoComplete="new-password"
+                    addClass="w-full"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                   />
@@ -236,6 +238,7 @@ export const Form = ({ isLogin }) => {
                     value={loginForm.password}
                     handlerFunc={handleLoginInputChange}
                     autoComplete="new-password"
+                    addClass="w-full"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                   />
