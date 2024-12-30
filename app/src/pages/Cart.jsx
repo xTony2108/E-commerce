@@ -77,26 +77,26 @@ export const Cart = () => {
                         Rimuovi
                       </button>
                     </div>
-                    <div className="flex justify-end border-t border-border pb-4 pt-8 gap-20">
-                      <div className="flex gap-12">
-                        <FormInput
-                          type="text"
-                          name="discount"
-                          placeholder="Codice sconto"
-                          autoComplete="discount"
-                          addClass="text-sm w-56"
-                        />
-                        <Buttons type="button" text="Applica codice" />
-                      </div>
-                      <Buttons
-                        type="button"
-                        text="Procedi all'acquisto"
-                        orange={true}
-                      />
-                    </div>
                   </div>
                 );
               })}
+              <div className="flex justify-end py-8 pr-4 gap-8">
+                <div className="flex gap-4">
+                  <FormInput
+                    type="text"
+                    name="discount"
+                    placeholder="Codice sconto"
+                    autoComplete="discount"
+                    addClass="text-sm w-56"
+                  />
+                  <Buttons type="button" text="Applica codice" />
+                </div>
+                <Buttons
+                  type="button"
+                  text="Procedi all'acquisto"
+                  orange={true}
+                />
+              </div>
             </div>
           ) : (
             <div className="min-h-fullWithoutBars w-full border border-border rounded-lg flex justify-center items-center p-20">
