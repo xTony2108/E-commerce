@@ -60,7 +60,7 @@ export const Cart = () => {
                         {product.name}
                       </Link>
                     </div>
-                    <div className="border-t border-border p-4 text-end text-white flex items-center justify-end gap-12">
+                    <div className="p-4 text-end text-white flex items-center justify-end gap-12">
                       <ProductQuantity
                         add={() => addQuantity(product)}
                         remove={() => removeQuantity(product)}
@@ -76,11 +76,23 @@ export const Cart = () => {
                         <FontAwesomeIcon icon="fa-solid fa-trash-can" />
                         Rimuovi
                       </button>
+                      <span className="text-primary font-semibold text-xl">
+                        {product.price * product.cartQnt} €
+                      </span>
                     </div>
                   </div>
                 );
               })}
+              <div className="flex justify-end py-8 pr-4 gap-8 border-t border-border">
+                <span className="text-white text-lg font-medium pr-4">TOTALE:
+                  <span className="font-semibold text-xl text-primary"> {
+                    products && products.reduce((acc, val) => acc + (val.price * val.cartQnt), 0).toFixed(2)
+                  } €
+                  </span>
+                </span>
+              </div>
               <div className="flex justify-end py-8 pr-4 gap-8">
+                
                 <div className="flex gap-4">
                   <FormInput
                     type="text"

@@ -3,7 +3,7 @@ import { SearchBar } from "../SearchBar";
 import { Link } from "react-router-dom";
 import { useGetUserDataQuery } from "../../services/product/userSlice";
 import { internalMemory } from "../../utility/internalMemory";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import { Flip, toast } from "react-toastify";
 import { useEffect } from "react";
@@ -12,6 +12,9 @@ export const Header = () => {
   const dispatch = useDispatch();
   const token = internalMemory.get("token");
 
+  const cart = useSelector(state => state.cart.cart)
+  console.log(cart);
+  
   const { data: userInfo, error } = useGetUserDataQuery(undefined, {
     skip: token ? false : true,
   });
@@ -68,11 +71,17 @@ export const Header = () => {
                   />
                 </div>
                 <div className="h-full text-white pr-5">
-                  <span>€ 0.00</span>
+                  <span>
+                    {
+                      cart && cart.reduce((acc, val) => acc + (val.price * val.cartQnt), 0).toFixed(2)
+                    } €
+                  </span>
                 </div>
               </Link>
               <div className="bg-primary py-3.5 px-5 rounded-r-full text-white">
-                0
+                    {
+                      cart && cart.reduce((acc, val) => acc + val.cartQnt, 0)
+                    }
               </div>
             </div>
           </div>

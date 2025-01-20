@@ -18,7 +18,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
             className="flex flex-col justify-between  border border-border rounded-xl basis-[calc(33.333333%-1.25rem)] hover:-translate-y-2 transition-all ease-in-out duration-300 will-change-transform"
           >
             <div className="mt-5">
-              <div className="max-w-72 mx-auto">
+              <div className="flex max-w-72 h-72 mx-auto">
                 <img
                   alt={`${product.name}`}
                   src={`${product.frontImage}`}
@@ -30,7 +30,6 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                   to={`/products/${encodeURIComponent(
                     product.name.replaceAll(" ", "_")
                   )}`}
-                  onClick={() => dispatch(setSingleProduct(product))}
                   className="text-white text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                 >
                   {product.name}
@@ -92,7 +91,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
               <SwiperSlide key={product._id} className="!flex !h-auto">
                 <div className="flex flex-col flex-grow border border-border rounded-xl basis-[calc(33.333333%-1.25rem)]">
                   <div className="mt-5">
-                    <div className="max-w-72 mx-auto">
+                    <div className="flex h-72 max-w-72 mx-auto">
                       <img
                         alt={`${product.name}`}
                         src={`${product.frontImage}`}
@@ -102,7 +101,6 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                     <div className="p-10 py-4">
                       <Link
                         to={`/products/${product.name}`}
-                        onClick={() => dispatch(setSingleProduct(product))}
                         className="text-white text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                       >
                         {product.name}

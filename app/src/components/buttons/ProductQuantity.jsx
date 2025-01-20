@@ -8,7 +8,7 @@ export const ProductQuantity = ({ add, show, remove, quantity }) => {
         -
       </button>
       <input
-        className="text-white text-center text-lg border border-border h-10 w-12 rounded-lg bg-transparent outline-none "
+        className="text-white text-center text-lg border border-border h-10 w-12 rounded-lg bg-transparent outline-none appearance-none "
         type="number"
         value={quantity}
         onChange={show}

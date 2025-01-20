@@ -41,7 +41,7 @@ export const CategoriesSection = () => {
                     className="select-none flex flex-col gap-4 items-center text-white  hover:text-primary hover:fill-primary fill-white transition-all stroke-white hover:stroke-primary"
                   >
                     <div className="border border-border p-5 rounded-full">
-                      <div className="w-40 h-40 bg-[#191919] rounded-full p-6">
+                      <div className="flex w-40 h-40 bg-[#191919] rounded-full p-6">
                         {checkCategory(category)}
                       </div>
                     </div>
