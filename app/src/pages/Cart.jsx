@@ -38,8 +38,8 @@ export const Cart = () => {
     <>
       <Header />
       <Navbar />
-      <div className="bg-black min-h-fullWithoutBars">
-        <div className="min-h-fullWithoutBars max-w-screen-2xl m-auto flex flex-col items-center py-20">
+      <div className="bg-bg min-h-fullWithoutBars">
+        <div className="min-h-fullWithoutBars max-w-screen-2xl m-auto flex flex-col items-center py-20 px-6">
           <PageHeading page={"Carrello"} />
           <PageLocation pages={["Carrello"]} />
           {products && products.length > 0 ? (
@@ -60,7 +60,7 @@ export const Cart = () => {
                         {product.name}
                       </Link>
                     </div>
-                    <div className="p-4 text-end text-white flex items-center justify-end gap-12">
+                    <div className="p-4 text-end text-secondary flex items-center justify-end gap-12">
                       <ProductQuantity
                         add={() => addQuantity(product)}
                         remove={() => removeQuantity(product)}
@@ -77,19 +77,20 @@ export const Cart = () => {
                         Rimuovi
                       </button>
                       <span className="text-primary font-semibold text-xl">
-                        {product.price * product.cartQnt} €
+                        {(product.price * product.cartQnt).toFixed(2)} €
                       </span>
                     </div>
                   </div>
                 );
               })}
-              <div className="flex justify-end py-8 pr-4 gap-8 border-t border-border">
-                <span className="text-white text-lg font-medium pr-4">TOTALE:
-                  <span className="font-semibold text-xl text-primary"> {
+              <div className="flex justify-end py-8 pr-8 border-t border-border">
+                <span className="text-secondary text-lg font-medium pr-2">
+                  Totale:
+                </span>
+                <span className="font-medium text-xl text-primary"> {
                     products && products.reduce((acc, val) => acc + (val.price * val.cartQnt), 0).toFixed(2)
                   } €
                   </span>
-                </span>
               </div>
               <div className="flex justify-end py-8 pr-4 gap-8">
                 
@@ -112,7 +113,7 @@ export const Cart = () => {
             </div>
           ) : (
             <div className="min-h-fullWithoutBars w-full border border-border rounded-lg flex justify-center items-center p-20">
-              <span className="text-white text-2xl font-bold">
+              <span className="text-secondary text-2xl font-bold">
                 Nessun articolo nel carrello
               </span>
             </div>

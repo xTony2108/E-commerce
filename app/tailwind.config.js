@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const lightMode = false;
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -15,8 +16,11 @@ export default {
         primary: "#fa4f09",
         grayBg: "#191919",
         border: "#414141",
-        priceRed: "#FF2B2B",
-        priceGray: "#999999",
+        discount: "#FF2B2B",
+        fullPrice: "#999999",
+        secondary: lightMode ? "#000000" : "#ffffff",
+        bg: lightMode ? "#ffffff" : "#000000",
+        expiration: "#a6a6a6",
       },
       minHeight: {
         fullWithoutBars: "calc(100svh - 172px)",

@@ -18,12 +18,12 @@ export const SpecialOffersCard = ({ arr }) => {
         </div>
         <Link
           to={`/products/${product.name}`}
-          className="text-xl text-white font-prosto line-clamp-2 hover:text-primary"
+          className="text-xl text-secondary font-prosto line-clamp-2 hover:text-primary"
         >
           {product.name}
         </Link>
         <div className="flex gap-2 py-4 items-center">
-          <span className="text-xl font-semibold text-priceGray line-through decoration-2">
+          <span className="text-xl font-semibold text-fullPrice line-through decoration-2">
             {product.price}€
           </span>
           <span className="text-xl font-semibold text-primary">
@@ -33,11 +33,11 @@ export const SpecialOffersCard = ({ arr }) => {
             ).toFixed(2)}
             €
           </span>
-          <span className="text-priceRed font-semibold">
+          <span className="text-discount font-semibold">
             {-(product.price * (product.offers.discountPercentage / 100)).toFixed(2)}€
           </span>
         </div>
-        <span className="text-xl text-white font-semibold pb-10">
+        <span className="text-xl text-secondary font-semibold pb-10">
           Disponibilità: {product.qnt}
         </span>
       </div>

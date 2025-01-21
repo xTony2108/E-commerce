@@ -2,7 +2,7 @@ import { Ad } from "./Ad";
 
 export const AdSection = () => {
   return (
-    <div className="flex gap-6 relative bg-black py-10">
+    <div className="flex gap-6 relative bg-bg py-10">
       <Ad
         heading="Scopri la potenza!"
         paragraph="Esplora la nostra vasta gamma di componenti PC di alta qualità per

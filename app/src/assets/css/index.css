@@ -34,6 +34,24 @@
     transition: background-color 5000s ease-in-out 0s;
     caret-color: white;
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #BDBDBD;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6E6E6E;
+  }
+
+  
   h1,
   h2,
   h3,

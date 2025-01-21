@@ -12,6 +12,8 @@ export const Header = () => {
   const dispatch = useDispatch();
   const token = internalMemory.get("token");
 
+  const lightMode = internalMemory.get("lightMode");
+
   const cart = useSelector(state => state.cart.cart)
   console.log(cart);
   
@@ -37,11 +39,11 @@ export const Header = () => {
 
   return (
     <>
-      <header className="bg-black">
-        <div className="flex items-center justify-between max-w-screen-2xl m-auto py-6 relative z-50 gap-8">
+      <header className="bg-bg">
+        <div className="flex items-center justify-between max-w-screen-2xl m-auto py-6 relative z-50 gap-8 px-12">
           <div className="flex items-center gap-10 flex-grow">
             <div className="min-w-fit">
-              <p className="text-2xl text-white w-full font-bold">
+              <p className="text-2xl text-secondary w-full font-bold">
                 GamerGear Hub
               </p>
             </div>
@@ -55,10 +57,10 @@ export const Header = () => {
               <div className="bg-primary py-3.5 px-5 rounded-l-full">
                 <FontAwesomeIcon
                   icon="fa-regular fa-user"
-                  style={{ color: "white" }}
+                  style={{ color: lightMode ? "black" : "white" }}
                 />
               </div>
-              <div className="h-full text-white px-6">
+              <div className="h-full text-secondary px-6">
                 <span>{userInfo ? userInfo.name : "Profilo"}</span>
               </div>
             </Link>
@@ -70,7 +72,7 @@ export const Header = () => {
                     style={{ color: "#fa4f09" }}
                   />
                 </div>
-                <div className="h-full text-white pr-5">
+                <div className="h-full text-secondary pr-5">
                   <span>
                     {
                       cart && cart.reduce((acc, val) => acc + (val.price * val.cartQnt), 0).toFixed(2)
@@ -78,7 +80,7 @@ export const Header = () => {
                   </span>
                 </div>
               </Link>
-              <div className="bg-primary py-3.5 px-5 rounded-r-full text-white">
+              <div className="bg-primary py-3.5 px-5 rounded-r-full text-secondary">
                     {
                       cart && cart.reduce((acc, val) => acc + val.cartQnt, 0)
                     }

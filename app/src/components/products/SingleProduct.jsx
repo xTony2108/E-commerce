@@ -23,7 +23,7 @@ export const SingleProduct = () => {
   );
 
   const [image, setImage] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [show, setShow] = useState("description");
   const bigImageRef = useRef();
 
@@ -42,7 +42,7 @@ export const SingleProduct = () => {
   };
 
   const removeQuantity = () => {
-    setQuantity((prevstate) => (prevstate <= 0 ? 0 : prevstate - 1));
+    setQuantity((prevstate) => (prevstate <= 1 ? 1 : prevstate - 1));
   };
 
   const showQuantity = (e) => {
@@ -61,7 +61,7 @@ export const SingleProduct = () => {
       {product && (
         <div className="max-w-screen-2xl m-auto flex flex-col py-8 min-h-[calc(100svh-112px)]">
           <PageLocation pages={["Prodotti", "Dettagli"]} />
-          <div className="flex mt-8 gap-6">
+          <div className="flex mt-8 gap-6 px-12">
             <div className="flex flex-col gap-4 flex-1 basis-2/5 ">
               <div className="rounded-md flex items-center justify-center aspect-square bg-grayBg ">
                 <img
@@ -129,12 +129,17 @@ export const SingleProduct = () => {
                 </Link>
               </span>
               <ShareLinks />
+              {
+              product && product.qnt ?
               <ProductQuantity
                 add={addQuantity}
                 remove={removeQuantity}
                 show={showQuantity}
                 quantity={quantity}
               />
+              :
+              <span className="text-discount font-medium text-xl">Non disponibile</span>
+              }
               <div className="flex-grow flex items-end">
                 <Buttons
                   type="button"
@@ -150,7 +155,7 @@ export const SingleProduct = () => {
               </div>
             </div>
           </div>
-          <div className="py-6 my-6 border-y border-border flex items-center gap-4">
+          <div className="py-6 my-6 border-y border-border flex items-center gap-4 px-12">
             <button
               onClick={() => setShow("description")}
               className={clsx(
@@ -179,7 +184,7 @@ export const SingleProduct = () => {
               </div>
             )
           ) : (
-            <div className="mt-4 text-[#d2d2d2]">
+            <div className="mt-4 text-[#d2d2d2] px-12">
               {product.reviews.length > 0 ? (
                 product.reviews.map((review) => (
                   <div className="flex flex-col border border-border rounded-xl p-6">

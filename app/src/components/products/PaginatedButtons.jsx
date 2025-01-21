@@ -16,7 +16,7 @@ export const PaginatedButtons = forwardRef(({ pagination }, ref) => {
         <button
           onClick={() => handlePrevPage(10)}
           className={clsx(
-            "text-white w-12 h-12 text-center rounded-full border border-border transition-all"
+            "text-secondary w-12 h-12 text-center rounded-full border border-border transition-all"
           )}
         >
           {`<<`}
@@ -25,7 +25,7 @@ export const PaginatedButtons = forwardRef(({ pagination }, ref) => {
       <button
         onClick={() => handlePrevPage(1)}
         className={clsx(
-          "text-white w-12 h-12 text-center rounded-full border border-border transition-all"
+          "text-secondary w-12 h-12 text-center rounded-full border border-border transition-all"
         )}
       >
         {`<`}
@@ -37,7 +37,7 @@ export const PaginatedButtons = forwardRef(({ pagination }, ref) => {
             "w-12 h-12 text-center rounded-full border border-border transition-all",
             pageNumber + 1 === page
               ? "border-primary text-primary"
-              : "text-white"
+              : "text-secondary"
           )}
           key={i + new Date()}
         >
@@ -47,7 +47,7 @@ export const PaginatedButtons = forwardRef(({ pagination }, ref) => {
       <button
         onClick={() => handleNextPage(1)}
         className={clsx(
-          "text-white w-12 h-12 text-center rounded-full border border-border transition-all"
+          "text-secondary w-12 h-12 text-center rounded-full border border-border transition-all"
         )}
       >
         {`>`}
@@ -56,7 +56,7 @@ export const PaginatedButtons = forwardRef(({ pagination }, ref) => {
         <button
           onClick={() => handleNextPage(10)}
           className={clsx(
-            "text-white w-12 h-12 text-center rounded-full border border-border transition-all"
+            "text-secondary w-12 h-12 text-center rounded-full border border-border transition-all"
           )}
         >
           {`>>`}

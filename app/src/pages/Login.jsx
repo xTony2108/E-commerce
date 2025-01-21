@@ -9,7 +9,7 @@ export const Login = () => {
     <>
       <Header />
       <Navbar />
-      <div className="flex flex-col justify-center items-center min-h-[calc(100svh-172px)] bg-black py-20">
+      <div className="flex flex-col justify-center items-center min-h-[calc(100svh-172px)] bg-black py-20 px-6">
         <PageHeading page="Login"/>
         <PageLocation pages={["Login"]} />
         <Form isLogin={true} />

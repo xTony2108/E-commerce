@@ -16,14 +16,14 @@ export const LatestArrives = () => {
   }, [products]);
 
   return (
-    <div className="bg-black py-20">
+    <div className="bg-bg py-20">
       <div className=" max-w-screen-2xl m-auto">
         <div className="flex items-center justify-center gap-3 border-b border-border pb-8">
           <span className="relative orangeDot"></span>
-          <h2 className="text-white text-4xl font-semibold">Ultimi arrivi</h2>
+          <h2 className="text-secondary text-4xl font-semibold">Ultimi arrivi</h2>
           <span className="relative orangeDot"></span>
         </div>
-        <div className="flex py-20 gap-5 items-start">
+        <div className="flex py-20 gap-5 items-start px-12">
           <SpecialOffers />
           <div className="flex flex-wrap gap-5 flex-1 basis-3/4">
             <ProductsCard productsArray={recentProducts} />

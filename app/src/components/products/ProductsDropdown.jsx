@@ -21,7 +21,7 @@ export const ProductsDropdown = ({ pagination, state }) => {
   return (
     <div
       onClick={() => setShowMenu(!showMenu)}
-      className="flex items-center text-white outline-none text-center bg-transparent border min-w-44 border-border px-[1px] rounded-md py-1 relative select-none cursor-pointer"
+      className="flex items-center text-secondary outline-none text-center bg-transparent border min-w-44 border-border px-[1px] rounded-md py-1 relative select-none cursor-pointer"
     >
       <span className="flex-1 px-4">
         {query === "default" ? "Mostra tutto" : query}
@@ -46,7 +46,7 @@ export const ProductsDropdown = ({ pagination, state }) => {
         <button
           onClick={handleSelectFilter}
           value="default"
-          className="bg-transparent text-white py-2 text-sm block text-center w-full"
+          className="bg-transparent text-secondary py-2 text-sm block text-center w-full"
         >
           Mostra tutto
         </button>
@@ -54,7 +54,7 @@ export const ProductsDropdown = ({ pagination, state }) => {
           categories.map((category, i) => {
             return (
               <button
-                className="bg-transparent text-white py-2 text-sm block text-center w-full"
+                className="bg-transparent text-secondary py-2 text-sm block text-center w-full"
                 key={category + i}
                 value={category}
                 onClick={handleSelectFilter}
