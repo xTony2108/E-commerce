@@ -18,7 +18,7 @@ export const SpecialOffersCard = ({ arr }) => {
         </div>
         <Link
           to={`/products/${product.name}`}
-          className="text-xl text-secondary font-prosto line-clamp-2 hover:text-primary"
+          className="text-xl text-light dark:text-dark font-prosto line-clamp-2 hover:text-primary"
         >
           {product.name}
         </Link>
@@ -37,7 +37,7 @@ export const SpecialOffersCard = ({ arr }) => {
             {-(product.price * (product.offers.discountPercentage / 100)).toFixed(2)}€
           </span>
         </div>
-        <span className="text-xl text-secondary font-semibold pb-10">
+        <span className="text-xl text-light dark:text-dark font-semibold pb-10">
           Disponibilità: {product.qnt}
         </span>
       </div>

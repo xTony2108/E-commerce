@@ -25,25 +25,25 @@ export const Cart = () => {
     dispatch(removeQnt({ id: product.id }));
   };
 
-  const showQuantity = (e, product) => {
-    dispatch(showMaxQnt({ id: product.id, value: e.target.value }));
+  const showQuantity = (e, product) => {    
+    dispatch(showMaxQnt({ id: product.id, cartQnt: Number(e.target.value) }));
   };
 
   const addQuantity = (product) => {
-    console.log(product);
-
-    dispatch(addToCart({ id: product.id }));
+    dispatch(addToCart({ id: product.id, cartQnt: 1 }));
   };
+
+
   return (
     <>
       <Header />
       <Navbar />
-      <div className="bg-bg min-h-fullWithoutBars">
+      <div className="bg-white dark:bg-black min-h-fullWithoutBars">
         <div className="min-h-fullWithoutBars max-w-screen-2xl m-auto flex flex-col items-center py-20 px-6">
           <PageHeading page={"Carrello"} />
           <PageLocation pages={["Carrello"]} />
           {products && products.length > 0 ? (
-            <div className="w-full border border-border rounded-lg">
+            <div className="w-full border border-border rounded-lg bg-lightBg dark:bg-grayBg">
               {products.map((product) => {
                 return (
                   <div className="flex flex-col p-4" key={product.id}>
@@ -60,7 +60,7 @@ export const Cart = () => {
                         {product.name}
                       </Link>
                     </div>
-                    <div className="p-4 text-end text-secondary flex items-center justify-end gap-12">
+                    <div className="p-4 text-end text-light dark:text-dark flex items-center justify-end gap-12">
                       <ProductQuantity
                         add={() => addQuantity(product)}
                         remove={() => removeQuantity(product)}
@@ -84,10 +84,10 @@ export const Cart = () => {
                 );
               })}
               <div className="flex justify-end py-8 pr-8 border-t border-border">
-                <span className="text-secondary text-lg font-medium pr-2">
+                <span className="text-light dark:text-dark text-lg font-semibold pr-2">
                   Totale:
                 </span>
-                <span className="font-medium text-xl text-primary"> {
+                <span className="font-semibold text-xl text-primary"> {
                     products && products.reduce((acc, val) => acc + (val.price * val.cartQnt), 0).toFixed(2)
                   } €
                   </span>
@@ -113,7 +113,7 @@ export const Cart = () => {
             </div>
           ) : (
             <div className="min-h-fullWithoutBars w-full border border-border rounded-lg flex justify-center items-center p-20">
-              <span className="text-secondary text-2xl font-bold">
+              <span className="text-light dark:text-dark text-2xl font-bold">
                 Nessun articolo nel carrello
               </span>
             </div>

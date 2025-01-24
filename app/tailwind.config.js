@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-const lightMode = false;
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -15,12 +15,15 @@ export default {
       colors: {
         primary: "#fa4f09",
         grayBg: "#191919",
+        lightBg: "#f5f5f5",
         border: "#414141",
         discount: "#FF2B2B",
         fullPrice: "#999999",
-        secondary: lightMode ? "#000000" : "#ffffff",
-        bg: lightMode ? "#ffffff" : "#000000",
+        dark: "#ffffff",
+        light: "#000000",
+        bg: "#000000",
         expiration: "#a6a6a6",
+        lightGray: "#d2d2d2"
       },
       minHeight: {
         fullWithoutBars: "calc(100svh - 172px)",

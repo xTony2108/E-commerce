@@ -145,7 +145,7 @@ export const Form = ({ isLogin }) => {
   return (
     <>
       {!isLogin ? (
-        <div className="flex flex-col bg-bg rounded-xl border border-border max-w-screen-2xl m-auto w-full p-16">
+        <div className="flex flex-col bg-lightBg dark:bg-grayBg rounded-xl border border-border max-w-screen-2xl m-auto w-full p-16">
           <div className="flex gap-6">
             <div className="flex-1 basis-4/6">
               <img src={loginImage} alt="" className="rounded-lg" />
@@ -153,7 +153,7 @@ export const Form = ({ isLogin }) => {
             <div className="flex flex-col justify-between flex-1 basis-2/6">
               <form>
                 <div className="flex flex-col items-center gap-12">
-                  <span className="text-secondary text-4xl font-bold w-full block font-prosto text-center">
+                  <span className="text-light dark:text-dark text-4xl font-bold w-full block font-prosto text-center">
                     Benvenuto
                   </span>
                   <FormInput
@@ -203,7 +203,7 @@ export const Form = ({ isLogin }) => {
                   />
                 </div>
               </form>
-              <span className="text-secondary text-center block">
+              <span className="text-light dark:text-dark text-center block">
                 Sei già registrato?
               </span>
               <FormButton text="Login" isButton={false} path="/login" />
@@ -211,7 +211,7 @@ export const Form = ({ isLogin }) => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col bg-bg rounded-xl border border-border max-w-screen-2xl m-auto w-full p-16">
+        <div className="flex flex-col bg-white dark:bg-black rounded-xl border border-border max-w-screen-2xl m-auto w-full p-16">
           <div className="flex gap-6">
             <div className="flex-1 basis-4/6">
               <img src={loginImage} alt="" className="rounded-lg" />
@@ -219,7 +219,7 @@ export const Form = ({ isLogin }) => {
             <div className="flex flex-col justify-between flex-1 basis-2/6">
               <form>
                 <div className="flex flex-col items-center gap-12">
-                  <span className="text-secondary text-4xl font-bold w-full block font-prosto text-center">
+                  <span className="text-light dark:text-dark text-4xl font-bold w-full block font-prosto text-center">
                     Bentornato
                   </span>
                   <FormInput
@@ -257,7 +257,7 @@ export const Form = ({ isLogin }) => {
                   />
                 </div>
               </form>
-              <span className="text-secondary text-center block">
+              <span className="text-light dark:text-dark text-center block">
                 Non sei registrato?
               </span>
               <FormButton text="Registrati" isButton={false} path="/register" />

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const PageLocation = ({ pages }) => {
   return (
     <div className="flex justify-center my-8 font-semibold">
-      <Link to="/" className="text-secondary hover:text-primary transition-all">
+      <Link to="/" className="text-light dark:text-dark hover:text-primary transition-all">
         <FontAwesomeIcon
           icon="fa-solid fa-home"
           style={{ marginRight: "8px" }}
@@ -12,7 +12,7 @@ export const PageLocation = ({ pages }) => {
         Home
       </Link>
       {pages.length <= 1 ? (
-        <span className="text-secondary flex items-center">
+        <span className="text-light dark:text-dark flex items-center">
           <FontAwesomeIcon
             icon="fa-solid fa-caret-right"
             style={{ margin: "0 8px" }}
@@ -29,13 +29,13 @@ export const PageLocation = ({ pages }) => {
               />
               <Link
                 to=".."
-                className="text-secondary hover:text-primary transition-all"
+                className="text-light dark:text-dark hover:text-primary transition-all"
               >
                 {page}
               </Link>
             </div>
           ) : (
-            <span key={page + i} className="text-secondary flex items-center">
+            <span key={page + i} className="text-light dark:text-dark flex items-center">
               <FontAwesomeIcon
                 icon="fa-solid fa-caret-right"
                 style={{ margin: "0 8px" }}

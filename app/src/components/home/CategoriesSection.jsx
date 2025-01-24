@@ -20,11 +20,11 @@ export const CategoriesSection = () => {
   const categories = getCategories(true);
 
   return (
-    <div className="bg-bg py-32">
+    <div className="bg-white dark:bg-black py-32">
       <div className="max-w-screen-2xl m-auto max-2xl:max-w-screen-lg">
         <div className="flex justify-center items-center gap-4">
           <span className="orangeDot"></span>
-          <h2 className="text-secondary text-4xl text-center">
+          <h2 className="text-light dark:text-dark text-4xl text-center">
             Le nostre categorie
           </h2>
           <span className="orangeDot"></span>
@@ -38,10 +38,10 @@ export const CategoriesSection = () => {
                   <Link
                     onClick={() => dispatch(setCategory(category))}
                     to={`/products`}
-                    className="select-none flex flex-col gap-4 items-center text-secondary  hover:text-primary hover:fill-primary fill-secondary transition-all stroke-secondary hover:stroke-primary"
+                    className="select-none flex flex-col gap-4 items-center text-light dark:text-dark *:fill-dark *:stroke-dark transition-all *:hover:stroke-primary *:hover:text-primary *:hover:fill-primary"
                   >
                     <div className="border border-border p-5 rounded-full">
-                      <div className="flex w-40 h-40 bg-grayBg rounded-full p-6">
+                      <div className="flex w-40 h-40 bg-border dark:bg-grayBg rounded-full p-6">
                         {checkCategory(category)}
                       </div>
                     </div>

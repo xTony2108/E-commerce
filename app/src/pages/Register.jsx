@@ -10,7 +10,7 @@ export const Register = () => {
     <>
       <Header />
       <Navbar />
-      <div className="flex flex-col justify-center items-center min-h-fullWithoutBars bg-black py-20 px-6">
+      <div className="flex flex-col justify-center items-center min-h-fullWithoutBars bg-white dark:bg-black py-20 px-6">
         <PageHeading page="Registrati"/>
         <PageLocation pages={["Registrati"]} />
         <Form isLogin={false} />

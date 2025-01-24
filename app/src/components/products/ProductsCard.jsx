@@ -30,7 +30,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                   to={`/products/${encodeURIComponent(
                     product.name.replaceAll(" ", "_")
                   )}`}
-                  className="text-secondary text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
+                  className="text-light dark:text-dark text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                 >
                   {product.name}
                 </Link>
@@ -100,8 +100,10 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                     </div>
                     <div className="p-10 py-4">
                       <Link
-                        to={`/products/${product.name}`}
-                        className="text-secondary text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
+                        to={`/products/${encodeURIComponent(
+                          product.name.replaceAll(" ", "_")
+                        )}`}
+                        className="text-light dark:text-dark text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                       >
                         {product.name}
                       </Link>

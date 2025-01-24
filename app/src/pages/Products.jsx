@@ -8,7 +8,7 @@ export const Products = () => {
     <>
       <Header />
       <Navbar />
-      <div className="bg-black min-h-screen relative">
+      <div className="bg-white dark:bg-black min-h-screen relative">
         <Outlet />
       </div>
       <Footer />

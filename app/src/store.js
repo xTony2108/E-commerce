@@ -3,6 +3,7 @@ import authReducer from "./features/auth/authSlice";
 import { emptyApiSlice } from "./services/emptyApiSlice";
 import categoryReducer from "./features/category/categorySlice";
 import cartReducer from "./features/cart/cartSlice";
+import localStorageMiddleware from "./components/middleware/localStorageMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,5 @@ export const store = configureStore({
     [emptyApiSlice.reducerPath]: emptyApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(emptyApiSlice.middleware),
+    getDefaultMiddleware().concat(emptyApiSlice.middleware).concat(localStorageMiddleware),
 });

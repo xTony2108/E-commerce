@@ -3,11 +3,13 @@ import { lazyLoad } from "./utility/lazyLoad";
 import { useGetAllProductsQuery } from "./services/product/productSlice";
 import { DisplayError } from "./components/layout/DisplayError";
 import { Loader } from "./components/layout/Loader";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ScrollTop } from "./components/layout/ScrollTop";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { internalMemory } from "./utility/internalMemory";
+import { syncCart } from "./features/cart/cartSlice";
 
 const Home = lazyLoad("Home", "Home");
 const Login = lazyLoad("Login", "Login");
@@ -18,6 +20,25 @@ const ProductsList = lazyLoad("ProductsList", "ProductsList", "components");
 const SingleProduct = lazyLoad("SingleProduct", "SingleProduct", "components");
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleStorageChange = (event) => {
+      if (event.key === "cart") {
+        const updatedCart = internalMemory.get("cart") || [];
+        dispatch(syncCart(updatedCart));
+      }
+    };
+
+    // Aggiungi il listener
+    window.addEventListener("storage", handleStorageChange);
+    
+    return () => {
+      // Rimuovi il listener
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
   const {
     isLoading: isLoadingProducts,
     error: productsError,

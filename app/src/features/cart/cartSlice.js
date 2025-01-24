@@ -1,73 +1,73 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { internalMemory } from "../../utility/internalMemory";
 
-const cartSlice = () => {
-  const cart = internalMemory.get("cart") || [];
+const cart = internalMemory.get("cart") || [];
 
-  return createSlice({
-    name: "cart",
-    initialState: {
-      cart,
-    },
-    reducers: {
-      addToCart: (state, action) => {
-        const productInCart = state.cart.find(
-          (product) => product.id === action.payload.id
-        );
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: {
+    cart,
+  },
+  reducers: {
+    addToCart: (state, action) => {
+      const productInCart = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
 
-        if (productInCart) {
-          if (productInCart.qnt >= productInCart.cartQnt + 1) {
-            productInCart.cartQnt += 1;
-          }
+      if (productInCart) {
+        const maxQnt = action.payload.cartQnt + productInCart.cartQnt;
+        if (maxQnt >= productInCart.qnt) {
+          productInCart.cartQnt = productInCart.qnt;
         } else {
-          state.cart.push({ ...action.payload, cartQnt: 1 });
+          productInCart.cartQnt += action.payload.cartQnt;
         }
+      } else {
+        state.cart.push({ ...action.payload });
+      }
 
-        internalMemory.save("cart", state.cart);
-      },
-
-      removeQnt: (state, action) => {
-        const productInCart = state.cart.find(
-          (product) => product.id === action.payload.id
-        );
-
-        if (productInCart) {
-          if (productInCart.cartQnt - 1 > 0) {
-            productInCart.cartQnt -= 1;
-          } else {
-            state.cart = state.cart.filter(
-              (product) => product.id != action.payload.id
-            );
-          }
-        }
-
-        internalMemory.save("cart", state.cart);
-      },
-
-      showMaxQnt: (state, action) => {
-        const productInCart = state.cart.find(
-          (product) => product.id === action.payload.id
-        );
-
-        if (productInCart) {
-          productInCart.cartQnt =
-            action.payload.value >= productInCart.qnt
-              ? productInCart.qnt
-              : Number(action.payload.value);
-        }
-      },
-
-      removeFromCart: (state, action) => {
-        state.cart = state.cart.filter(
-          (product) => action.payload.id != product.id
-        );
-        internalMemory.save("cart", state.cart);
-      },
     },
-  });
-};
 
-export const { addToCart, removeFromCart, removeQnt, showMaxQnt } =
-  cartSlice().actions;
+    removeQnt: (state, action) => {
+      const productInCart = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
 
-export default cartSlice().reducer;
+      if (productInCart) {
+        productInCart.cartQnt =
+          productInCart.cartQnt > 1 ? productInCart.cartQnt - 1 : 0;
+      }
+
+      state.cart = state.cart.filter((product) => product.cartQnt > 0);
+    },
+
+    showMaxQnt: (state, action) => {
+      const productInCart = state.cart.find(
+        (product) => product.id === action.payload.id
+      );
+
+      if (productInCart && Number(action.payload.cartQnt) >= productInCart.qnt) {
+        productInCart.cartQnt = productInCart.qnt;
+      } else if (productInCart && Number(action.payload.cartQnt) < productInCart.qnt && Number(action.payload.cartQnt) > 0) {
+        productInCart.cartQnt = Number(action.payload.cartQnt);
+      } else {
+        state.cart = state.cart.filter((product) => product.id !== action.payload.id);
+      }
+
+    },
+
+    removeFromCart: (state, action) => {
+      state.cart = state.cart.filter(
+        (product) => action.payload.id != product.id
+      );
+    },
+    syncCart: (state, action) => {
+      state.cart = action.payload;
+    },
+  },
+});
+
+
+export const { addToCart, removeFromCart, removeQnt, showMaxQnt, syncCart } =
+  cartSlice.actions;
+
+export default cartSlice.reducer;

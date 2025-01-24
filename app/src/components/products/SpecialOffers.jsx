@@ -6,16 +6,16 @@ export const SpecialOffers = () => {
     useGetSpecialOffers();
 
   return (
-    <div className="bg-grayBg p-6 rounded-xl flex-1 basis-1/4">
-      <span className="inline-block text-secondary text-2xl font-semibold">
+    <div className="bg-lightBg dark:bg-grayBg p-6 rounded-xl flex-1 basis-1/4">
+      <span className="inline-block text-light dark:text-dark text-2xl font-semibold">
         Offerta speciale
       </span>
       <SpecialOffersCard arr={specialOffers} />
       <div className="mt-6">
-        <span className="text-secondary font-prosto text-lg font-medium mb-2 block">
+        <span className="text-light dark:text-dark font-prosto text-lg font-medium mb-2 block">
           Affrettati!
         </span>
-        <span className="text-secondary font-prosto text-sm block mb-10">
+        <span className="text-light dark:text-dark font-prosto text-sm block mb-10">
           L'offerta scade in
         </span>
         <div className="flex justify-between items-center">

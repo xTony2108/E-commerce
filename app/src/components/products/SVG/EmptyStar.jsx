@@ -6,7 +6,7 @@ export const EmptyStar = () => {
         focusable="false"
         data-prefix="fas"
         data-icon="star"
-        className="svg-inline--fa fa-star block"
+        className="svg-inline--fa fa-star block fill-white dark:fill-black"
         role="img"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 576 512"
