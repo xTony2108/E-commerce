@@ -5,14 +5,15 @@ import { useGetAllProductsQuery } from "../../services/product/productSlice";
 import { Stars } from "./SVG/Stars";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
-import { Footer } from "../layout/Footer";
 import { PageLocation } from "../layout/PageLocation";
 import { ShareLinks } from "../buttons/ShareLinks";
 import { ProductQuantity } from "../buttons/ProductQuantity";
+import { useAddToCart } from "./hooks/useAddToCart";
 
 export const SingleProduct = () => {
   const { data: products = [] } = useGetAllProductsQuery();
   const param = useParams();
+
   const product = useMemo(
     () =>
       products.find(
@@ -21,9 +22,11 @@ export const SingleProduct = () => {
       ),
     [param]
   );
-
+  
+  const { handleAddToCart } = useAddToCart();
+  
   const [image, setImage] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [show, setShow] = useState("description");
   const bigImageRef = useRef();
 
@@ -42,7 +45,7 @@ export const SingleProduct = () => {
   };
 
   const removeQuantity = () => {
-    setQuantity((prevstate) => (prevstate <= 0 ? 0 : prevstate - 1));
+    setQuantity((prevstate) => (prevstate <= 1 ? 1 : prevstate - 1));
   };
 
   const showQuantity = (e) => {
@@ -56,14 +59,16 @@ export const SingleProduct = () => {
       prevState >= product.qnt ? product.qnt : prevState + 1
     );
   };
+  
+  
   return (
     <>
       {product && (
         <div className="max-w-screen-2xl m-auto flex flex-col py-8 min-h-[calc(100svh-112px)]">
           <PageLocation pages={["Prodotti", "Dettagli"]} />
-          <div className="flex mt-8 gap-6">
+          <div className="flex mt-8 gap-6 px-12">
             <div className="flex flex-col gap-4 flex-1 basis-2/5 ">
-              <div className="rounded-md flex items-center justify-center aspect-square bg-grayBg ">
+              <div className="rounded-md flex items-center justify-center aspect-square bg-lightBg dark:bg-grayBg ">
                 <img
                   ref={bigImageRef}
                   src={product.frontImage}
@@ -79,7 +84,7 @@ export const SingleProduct = () => {
                         src={item.image}
                         onMouseEnter={handleMouseHover}
                         onMouseLeave={handleMouseLeave}
-                        className="w-full max-w-28 aspect-square rounded-md relative z-30 object-contain bg-grayBg cursor-pointer"
+                        className="w-full max-w-28 aspect-square rounded-md relative z-30 object-contain bg-lightBg dark:bg-grayBg cursor-pointer"
                       />
                     ))}
                 </div>
@@ -92,49 +97,54 @@ export const SingleProduct = () => {
               <Stars product={product} />
               {product.offers.isActive ? (
                 <div className="flex items-center gap-3">
-                  <span className="text-priceGray font-prosto text-3xl line-through decoration-2">
+                  <span className="text-fullPrice font-prosto text-3xl line-through decoration-2">
                     {product.price}€
                   </span>
-                  <span className="text-white font-prosto text-4xl">
+                  <span className="text-light dark:text-dark font-prosto text-4xl">
                     {(
                       product.price *
                       (1 - product.offers.discountPercentage / 100)
                     ).toFixed(2)}
                     €
                   </span>
-                  <span className="text-priceRed font-prosto text-2xl">
+                  <span className="text-discount font-prosto text-2xl">
                     {-(product.price * (10 / 100)).toFixed(2)}€
                   </span>
                 </div>
               ) : (
-                <span className="text-white text-4xl font-prosto font-normal">
+                <span className="text-light dark:text-dark text-4xl font-prosto font-normal">
                   {product.price}€
                 </span>
               )}
               <h2 className="text-primary text-lg my-4">
                 Descrizione prodotto
               </h2>
-              <p className="text-white max-h-36 overflow-auto text-ellipsis line-clamp-5 scrollText">
+              <p className="text-light dark:text-dark max-h-36 overflow-auto text-ellipsis line-clamp-5 scrollText">
                 {product.details.length > 0
                   ? product.details
                   : "Nessuna descrizione per il prodotto"}
               </p>
-              <span className="text-white text-lg leading-none border-y border-border my-6 py-6 gap-2 font-prosto w-2/3">
+              <span className="text-light dark:text-dark text-lg leading-none border-y border-border my-6 py-6 gap-2 font-prosto w-2/3">
                 Categorie:
                 <Link
                   to="../"
-                  className="text-white hover:text-primary transition-all leading-none text-base ml-2"
+                  className="text-light dark:text-dark hover:text-primary transition-all leading-none text-base ml-2"
                 >
                   {product.category}
                 </Link>
               </span>
               <ShareLinks />
+              {
+              product && product.qnt ?
               <ProductQuantity
                 add={addQuantity}
                 remove={removeQuantity}
                 show={showQuantity}
                 quantity={quantity}
               />
+              :
+              <span className="text-discount font-medium text-xl">Non disponibile</span>
+              }
               <div className="flex-grow flex items-end">
                 <Buttons
                   type="button"
@@ -146,16 +156,17 @@ export const SingleProduct = () => {
                   }
                   text={"Aggiungi al carrello"}
                   addClass="w-2/3"
+                  onClick={() => handleAddToCart({...product, cartQnt: quantity})}
                 />
               </div>
             </div>
           </div>
-          <div className="py-6 my-6 border-y border-border flex items-center gap-4">
+          <div className="py-6 my-6 border-y border-border flex items-center gap-4 px-12">
             <button
               onClick={() => setShow("description")}
               className={clsx(
                 "font-prosto text-lg",
-                show === "description" ? "text-primary" : "text-white"
+                show === "description" ? "text-primary" : "text-light dark:text-dark"
               )}
             >
               DESCRIZIONE
@@ -164,7 +175,7 @@ export const SingleProduct = () => {
               onClick={() => setShow("reviews")}
               className={clsx(
                 "font-prosto text-lg",
-                show === "reviews" ? "text-primary" : "text-white"
+                show === "reviews" ? "text-primary" : "text-light dark:text-dark"
               )}
             >
               RECENSIONI ({product.reviews.length})
@@ -172,23 +183,23 @@ export const SingleProduct = () => {
           </div>
           {show === "description" ? (
             product.details.length > 0 ? (
-              <div className="mt-4 text-[#d2d2d2]">{product.details}</div>
+              <div className="mt-4 text-grayBg dark:text-lightGray px-12">{product.details}</div>
             ) : (
-              <div className="mt-4 text-[#d2d2d2] text-center">
+              <div className="mt-4 text-grayBg dark:text-lightGray text-center">
                 Nessuna descrizione per il prodotto
               </div>
             )
           ) : (
-            <div className="mt-4 text-[#d2d2d2]">
+            <div className="mt-4 text-grayBg dark:text-lightGray px-12">
               {product.reviews.length > 0 ? (
                 product.reviews.map((review) => (
-                  <div className="flex flex-col border border-border rounded-xl p-6">
+                  <div className="flex flex-col border border-border rounded-xl p-6 px-12">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
                         <span className="text-primary text-lg">
                           {review.author.name}
                         </span>
-                        <span className="text-white font-medium">
+                        <span className="text-light dark:text-dark font-medium">
                           {new Date(review.createdAt).toLocaleDateString(
                             "IT-it",
                             {
@@ -203,10 +214,10 @@ export const SingleProduct = () => {
                       </div>
                       <Stars product={review} isReview={true} />
                     </div>
-                    <span className="text-white text-lg font-semibold">
+                    <span className="text-light dark:text-dark text-lg font-semibold">
                       {review.title}
                     </span>
-                    <span className="text-white">{review.comment}</span>
+                    <span className="text-light dark:text-dark">{review.comment}</span>
                   </div>
                 ))
               ) : (
@@ -218,7 +229,6 @@ export const SingleProduct = () => {
           )}
         </div>
       )}
-      <Footer />
     </>
   );
 };

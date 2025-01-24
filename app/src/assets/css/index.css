@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+div {
+  @apply transition-colors duration-200
+}
+
 @layer base {
   body {
     font-family: "Montserrat", sans-serif;
@@ -16,6 +20,17 @@
     color: white;
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px black inset; /* Cambia 'black' con il colore di sfondo desiderato */
     box-shadow: 0 0 0 1000px black inset; /* Cambia 'white' con il colore di sfondo desiderato */
@@ -23,6 +38,24 @@
     transition: background-color 5000s ease-in-out 0s;
     caret-color: white;
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #BDBDBD;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6E6E6E;
+  }
+
+  
   h1,
   h2,
   h3,
@@ -148,6 +181,14 @@
     color: white;
   }
 
+  .addToCartIconLight {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .addToCart:hover .addToCartIconLight {
+    color: black;
+  }
+
   .buttonFillWhite::after {
     position: absolute;
     content: "";
@@ -172,6 +213,31 @@
     bottom: -50%;
   }
 
+  .buttonFillBlack::after {
+    position: absolute;
+    content: "";
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 150%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    background-color: black;
+    transition: all 0.7s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    z-index: -1;
+    opacity: 1;
+  }
+
+  .buttonFillBlack:hover {
+    color: #fa4f09;
+    transition: all 0.7s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  }
+  .buttonFillBlack:hover::after {
+    bottom: -50%;
+  }
+
+  
   .buttonFillOrange::after {
     position: absolute;
     content: "";

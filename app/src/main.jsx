@@ -24,7 +24,7 @@ import {
   faPinterestP,
   faFacebookF,
 } from "@fortawesome/free-brands-svg-icons";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUser,faMoon,faSun } from "@fortawesome/free-regular-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./store.js";
@@ -47,7 +47,9 @@ library.add(
   faInstagram,
   faLinkedinIn,
   faPinterestP,
-  faTrashCan
+  faTrashCan,
+  faMoon,
+  faSun
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(

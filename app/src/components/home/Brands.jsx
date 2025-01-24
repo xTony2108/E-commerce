@@ -8,16 +8,16 @@ import { BrandBox } from "./BrandBox";
 
 export const Brands = () => {
   return (
-    <div className="bg-black pb-32">
+    <div className="bg-white dark:bg-black pb-32">
       <div className="max-w-screen-2xl m-auto">
         <div className="flex justify-center items-center gap-3 mb-12">
           <span className="orangeDot"></span>
-          <h2 className="text-white text-4xl font-semibold">
+          <h2 className="text-light dark:text-dark text-4xl font-semibold">
             I nostri top brand
           </h2>
           <span className="orangeDot"></span>
         </div>
-        <div className="flex gap-6">
+        <div className="flex gap-6 px-12 bg-white dark:bg-black">
           <BrandBox image={amd} alt="amd logo" />
           <BrandBox image={nvidia} alt="nvidia logo" className="px-4" />
           <BrandBox image={intel} alt="intel logo" />

@@ -18,7 +18,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
             className="flex flex-col justify-between  border border-border rounded-xl basis-[calc(33.333333%-1.25rem)] hover:-translate-y-2 transition-all ease-in-out duration-300 will-change-transform"
           >
             <div className="mt-5">
-              <div className="max-w-72 mx-auto">
+              <div className="flex max-w-72 h-72 mx-auto">
                 <img
                   alt={`${product.name}`}
                   src={`${product.frontImage}`}
@@ -30,14 +30,13 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                   to={`/products/${encodeURIComponent(
                     product.name.replaceAll(" ", "_")
                   )}`}
-                  onClick={() => dispatch(setSingleProduct(product))}
-                  className="text-white text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
+                  className="text-light dark:text-dark text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                 >
                   {product.name}
                 </Link>
                 {product.offers.isActive ? (
                   <div className="pt-4 flex items-center gap-3">
-                    <span className="text-priceGray font-semibold text-lg line-through decoration-2">
+                    <span className="text-fullPrice font-semibold text-lg line-through decoration-2">
                       {product.price}€
                     </span>
                     <span className="text-primary font-semibold text-xl">
@@ -47,7 +46,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                       ).toFixed(2)}
                       €
                     </span>
-                    <span className="text-priceRed font-semibold">
+                    <span className="text-discount font-semibold">
                       {-(product.price * (10 / 100)).toFixed(2)}€
                     </span>
                   </div>
@@ -61,7 +60,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                 <Stars product={product} />
                 {product.qnt <= 6 && (
                   <span
-                    className={"text-priceRed font-semibold text-xs my-5 block"}
+                    className={"text-discount font-semibold text-xs my-5 block"}
                   >
                     {product.qnt > 0
                       ? `Disponibilità: solo ${product.qnt}`
@@ -90,9 +89,9 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
           {productsArray &&
             productsArray.map((product) => (
               <SwiperSlide key={product._id} className="!flex !h-auto">
-                <div className="flex flex-col flex-grow border border-border rounded-xl basis-[calc(33.333333%-1.25rem)]">
+                <div className="flex flex-col flex-grow border border-border rounded-xl basis-[calc(33.333333%-1.5rem)]">
                   <div className="mt-5">
-                    <div className="max-w-72 mx-auto">
+                    <div className="flex h-64 max-w-64 mx-auto">
                       <img
                         alt={`${product.name}`}
                         src={`${product.frontImage}`}
@@ -101,21 +100,22 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                     </div>
                     <div className="p-10 py-4">
                       <Link
-                        to={`/products/${product.name}`}
-                        onClick={() => dispatch(setSingleProduct(product))}
-                        className="text-white text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
+                        to={`/products/${encodeURIComponent(
+                          product.name.replaceAll(" ", "_")
+                        )}`}
+                        className="text-light dark:text-dark text-lg font-medium font-prosto line-clamp-1 hover:text-primary"
                       >
                         {product.name}
                       </Link>
                       {product.offers.isActive ? (
                         <div className="pt-5 flex items-center gap-3">
-                          <span className="text-priceGray font-semibold text-lg line-through decoration-2">
+                          <span className="text-fullPrice font-semibold text-lg line-through decoration-2">
                             {product.price}€
                           </span>
                           <span className="text-primary font-semibold text-xl">
                             {(product.price * (1 - 10 / 100)).toFixed(2)}€
                           </span>
-                          <span className="text-priceRed font-semibold">
+                          <span className="text-discount font-semibold">
                             {-(product.price * (10 / 100)).toFixed(2)}€
                           </span>
                         </div>
@@ -130,7 +130,7 @@ export const ProductsCard = ({ productsArray, isSwiper }) => {
                       {product.qnt <= 6 && (
                         <span
                           className={
-                            "text-priceRed font-semibold text-xs block"
+                            "text-discount font-semibold text-xs block"
                           }
                         >
                           {product.qnt > 0

@@ -15,14 +15,14 @@ export const Buttons = ({
       orange ? (
         <Link
           to={route}
-          className="relative bg-primary p-4 text-white font-semibold rounded-full w-fit text-sm buttonFillWhite overflow-hidden will-change-transform"
+          className="relative bg-primary p-4 text-dark font-semibold rounded-full w-fit text-sm buttonFillWhite overflow-hidden will-change-transform select-none"
         >
           {text}
         </Link>
       ) : (
         <Link
           to={route}
-          className="relative bg-white p-4 text-primary font-semibold rounded-full w-fit text-sm buttonFillOrange overflow-hidden will-change-transform"
+          className="relative bg-dark p-4 text-primary font-semibold rounded-full w-fit text-sm buttonFillOrange overflow-hidden will-change-transform select-none"
         >
           {text}
         </Link>
@@ -30,7 +30,7 @@ export const Buttons = ({
     ) : orange ? (
       <button
         className={clsx(
-          "relative bg-primary p-4 text-white font-semibold rounded-full text-sm buttonFillWhite overflow-hidden will-change-transform",
+          "relative bg-primary p-4 text-light dark:text-dark font-semibold rounded-full text-sm buttonFillBlack dark:buttonFillWhite overflow-hidden will-change-transform",
           addClass && addClass
         )}
         onClick={onClick}
@@ -41,7 +41,7 @@ export const Buttons = ({
     ) : (
       <button
         className={clsx(
-          "relative bg-white p-4 text-primary font-semibold rounded-full text-sm buttonFillOrange overflow-hidden will-change-transform",
+          "relative bg-light dark:text-dark p-4 text-primary font-semibold rounded-full text-sm buttonFillOrange overflow-hidden will-change-transform",
           addClass && addClass
         )}
         onClick={onClick}
